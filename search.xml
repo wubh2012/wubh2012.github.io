@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Hello World</title>
+    <url>/2020/06/18/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>test1</title>
+    <url>/2020/06/18/test1/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>猎豹行动读书笔记</title>
+    <url>/2020/06/22/%E7%8C%8E%E8%B1%B9%E8%A1%8C%E5%8A%A8%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h2 id="传统模式的问题"><a href="#传统模式的问题" class="headerlink" title="传统模式的问题"></a>传统模式的问题</h2><p>瀑布模型对业务部门的痛点</p>
+<ol>
+<li>逾期交付</li>
+<li>超支</li>
+<li>看到成品时项目已经接近尾声</li>
+<li>缺乏透明度，不知道具体进度</li>
+<li>很难变更需求</li>
+<li>最终开发的产品不是他们想要的</li>
+<li>延误战机，丢失机场机会</li>
+</ol>
+<p>对IT部门的痛点：</p>
+<ol>
+<li>过度承诺</li>
+<li>难以一次性消化所有需求</li>
+<li>害怕需求变更</li>
+<li>不断重做</li>
+<li>后期压力大</li>
+<li>加班</li>
+</ol>
+<p>分析造成这些痛点的原因：一个项目开始时，业务部门只会给IT部门需求概要和期望的交付日期，IT部门需要做评估和计划。而在项目开始的时候，只有预算和目标交付时间时确定的，还有其他因素都是不确定的，例如范围与具体需求，可能的需求变更，人员中途休假和离职，对现有系统的影响，服务器环境的搭建（需要什么配置，何时能到位）等。</p>
+<p>瀑布模型的开发过程一般有需求分析，设计，编程，测试和发布几个阶段，每个阶段一环扣一环，设计，编程，测试都依赖于完整且稳定的需求，因此需求分析非常重要，但往往花大了大量的时间挖掘需求，却压缩了开发时间，形成矛盾。用户在看到成品前，可能都无法确定自己真正想要的是什么，需求变化是不可避免的，牵一发而动全身，导致IT人员普遍不喜欢需求变更，所以简单的说瀑布模型适合确定性非常搞的项目，但这样的项目凤毛麟角。</p>
+<h2 id="什么是敏捷开发"><a href="#什么是敏捷开发" class="headerlink" title="什么是敏捷开发"></a>什么是敏捷开发</h2><p>敏捷所有的改变都是为了一件事，快速反馈！</p>
+<p>敏捷开发有很多方法论，其中比较流行的有Scrum，极限编程，看板方法。<br>Scrum中的概念：<br><strong>Product Owner（PO）</strong>：用户/客户/业务的代言人，就是可以做出业务决策的人，在Scrum中，PO的角色非常重要，一个成功的敏捷项目背后一定有一个好的PO。<br><strong>Scrum Master</strong>：熟悉Scrum流程的人，指导和确保团队已Scrum的方式进行交付<br><strong>Sprint</strong>： 迭代，一个项目的交付由多个迭代构成。<br><strong>User Story</strong>：用户故事，具有业务价值的交付单位，一个项目是由很多用户故事构成的。<br><strong>Product Backlog</strong>:可以理解位项目的待办，由用户故事构成<br><strong>Sprint Backlog</strong>: Sprint待办，确定一个迭代中由哪些用户故事，确定本次迭代的开发范围</p>
+<p>每个项目的交付由多个迭代构成，迭代的周期是固定的，通常是2-4个星期，不建议超过4个星期。</p>
+<h2 id="如何启动敏捷开发，Scrum开发流程："><a href="#如何启动敏捷开发，Scrum开发流程：" class="headerlink" title="如何启动敏捷开发，Scrum开发流程："></a>如何启动敏捷开发，Scrum开发流程：</h2><ul>
+<li>在每个Sprint开始的时候，PO和IT团队一起开Sprint计划会议，PO 对 Product Backlog 中的用户故事进行排序，选出最重要的用户故事。IT团队会对这些用户故事进行估算。</li>
+<li>接下来IT团队围绕Sprint Backlog中的用户故事进行开发。IT团队每天组织一次站会，所有成员聚在一起，每个成员说一下“昨天做了什么，今天会做什么，昨天遇到了什么问题”，这是为了让整个团队了解进度，也是为了尽早地暴露问题并及时解决。一个问题越早解决成本越低。由于站会每天都要发生，因此这个会议建议控制在15~20分钟。团队规模也有要求，建议团队人数控制在7个人以内。如果项目比较大型，应该考虑把大型团队拆分成若干个小团队。小团队的沟通效率也远远比大型团队高。</li>
+<li>在Sprint结束的时候，PO和IT团队又聚在一起开评审会议，IT团队向PO展示这个Sprint的交付，PO有任何反馈，甚至编程都可以定义成新的用户故事放到Product Backlog中重新排队，这也是敏捷应对需求变化的方法。这样缩短了反馈周期，可以帮助双方及时调整项目的方向，确保最终交付的正确性。</li>
+<li>IT团队也可以在这个时候总结下这个迭代中哪些地方做的好，哪些地方可以做的更好，形成持续改善的机制。</li>
+</ul>
+<p><strong>敏捷宣言</strong></p>
+<ul>
+<li>个体的交互胜于过程与工具</li>
+<li>可工作的软件胜于面面俱到的文档</li>
+<li>与客户的协作甚于基于合同的谈判</li>
+<li>短迭代开发，让PO更快，更早的看到成品，给与反馈</li>
+<li>每日站会，每天都能看到进度和阻碍</li>
+<li>回顾会议，每个迭代都要反思改进，形成持续改善的机制</li>
+</ul>
+<h2 id="实施敏捷开发的好处"><a href="#实施敏捷开发的好处" class="headerlink" title="实施敏捷开发的好处"></a>实施敏捷开发的好处</h2><p>对业务部门：</p>
+<ol>
+<li>不再需要一次性解释所有的需求</li>
+<li>可以随时提出需求变更</li>
+<li>进度透明</li>
+<li>确保最重要的需求能在目标交付日期获得</li>
+<li>确保得到正确的产品</li>
+</ol>
+<p>对IT部门：</p>
+<ol>
+<li>不再需要承诺一个未必能实现的计划</li>
+<li>更早的开工和交付</li>
+<li>为当前迭代进行更精确的计划</li>
+<li>适应需求变化</li>
+<li>适应不确定性</li>
+<li>开发正确的产品</li>
+<li>与业务人员的争执更少</li>
+</ol>
+<h2 id="敏捷与Devops有什么关联"><a href="#敏捷与Devops有什么关联" class="headerlink" title="敏捷与Devops有什么关联"></a>敏捷与Devops有什么关联</h2><p>敏捷打通了业务、开发、测试之间的墙，通过更紧密的沟通和交互实现更频繁的交付，然而开发团队和运维团队之间还有一堵墙，开发团队希望持续交付，运维团队希望稳定，DevOps就是要打破这最后一堵墙，实现开发与运维一体化和端对端的持续交付。</p>
+<h2 id="疑问"><a href="#疑问" class="headerlink" title="疑问"></a>疑问</h2><p>假如项目在开始的时候，客户一定要我们承诺什么时候能交付，这个怎么解决？</p>
+<p>敏捷自己有一套估算和计划方法，后面会讲</p>
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><p>JIRA: 项目与事务跟踪工具，被广泛应用于缺陷跟踪，客户服务，需求收集，敏捷管理<br>Controlfluence: </p>
+]]></content>
+  </entry>
+</search>
