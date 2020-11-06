@@ -108,7 +108,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="工具,frp," />
 
 
 
@@ -131,8 +131,10 @@
 <meta property="og:image" content="https://gitee.com/wubh/blogimg/raw/master/img/20201102173910.png">
 <meta property="og:image" content="https://gitee.com/wubh/blogimg/raw/master/img/20201102173915.png">
 <meta property="article:published_time" content="2020-11-02T09:27:46.000Z">
-<meta property="article:modified_time" content="2020-11-02T09:41:19.496Z">
+<meta property="article:modified_time" content="2020-11-06T01:10:28.778Z">
 <meta property="article:author" content="AALMIX">
+<meta property="article:tag" content="工具">
+<meta property="article:tag" content="frp">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://gitee.com/wubh/blogimg/raw/master/img/20201102173858.png">
 
@@ -490,7 +492,7 @@
 <p>frpc.ini</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">server_addr &#x3D; x.x.x.x</span><br><span class="line">server_port &#x3D; 7000</span><br><span class="line">token &#x3D; 123456</span><br><span class="line">[ssh]</span><br><span class="line">type &#x3D; tcp</span><br><span class="line">local_ip &#x3D; 127.0.0.1</span><br><span class="line">local_port &#x3D; 22</span><br><span class="line">remote_port &#x3D; 6000</span><br><span class="line">[mstsc]</span><br><span class="line">type &#x3D; tcp</span><br><span class="line">local_ip &#x3D; 127.0.0.1</span><br><span class="line">local_port &#x3D; 3389</span><br><span class="line">remote_port &#x3D; 7402</span><br><span class="line">[web]</span><br><span class="line">type &#x3D; http</span><br><span class="line">local_ip &#x3D; 127.0.0.1</span><br><span class="line">local_port &#x3D; 8078</span><br><span class="line">custom_domains &#x3D; www.youdomain.com</span><br></pre></td></tr></table></figure>
 
-<p>这里的配置文件多了一个 token的配置，token 用于验证连接，只有服务器端和客户端的 token 相同才能正常访问。重新启动 frps 和 frpc，然后我们就可以通过 <a href="http://www.youdomain.com/" target="_blank" rel="noopener">www.youdomain.com</a>:8080 访问 内网地址的8078 端口了，8080端口是 frps 中配置的 vhost_http_port 端口。</p>
+<p>这里的配置文件多了一个 token的配置，token 用于验证连接，只有服务器端和客户端的 token 相同才能正常访问,避免被别人恶意攻击。重新启动 frps 和 frpc，然后我们就可以通过 <a href="http://www.youdomain.com/" target="_blank" rel="noopener">www.youdomain.com</a>:8080 访问 内网地址的8078 端口了，8080端口是 frps 中配置的 vhost_http_port 端口。</p>
 <p><img src="https://gitee.com/wubh/blogimg/raw/master/img/20201102173915.png" alt="image-20201102173744935"></p>
 <p>*<em>没有域名的配置 *</em></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># frps.ini</span><br><span class="line">[common]</span><br><span class="line">bind_addr &#x3D; 0.0.0.0</span><br><span class="line">bind_port &#x3D; 7000</span><br><span class="line">privilege_token &#x3D; 12345678</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># frpc.ini客户端配置</span><br><span class="line">[common]</span><br><span class="line">server_addr &#x3D; 服务端IP</span><br><span class="line">server_port &#x3D; 7000</span><br><span class="line">privilege_token &#x3D; 12345678</span><br><span class="line"></span><br><span class="line">[httpname]</span><br><span class="line">type &#x3D; tcp</span><br><span class="line">local_port &#x3D; 80</span><br><span class="line">local_ip &#x3D; 127.0.0.1</span><br><span class="line">remote_port &#x3D; 8080</span><br><span class="line"></span><br><span class="line">通过 服务端IP:8080既可访问到对应穿透的服务</span><br></pre></td></tr></table></figure>
@@ -522,6 +524,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag"># 工具</a>
+          
+            <a href="/tags/frp/" rel="tag"># frp</a>
+          
+        </div>
+      
 
       
       
@@ -540,6 +550,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/11/05/%E5%9C%A8windows%E4%B8%8A%E8%AE%BE%E7%BD%AEfrp%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8/" rel="prev" title="在windows上在windows上设置frp开机自动启动">
+                在windows上在windows上设置frp开机自动启动 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -628,6 +642,15 @@
             
 
             
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
 
           </nav>
 
@@ -640,6 +663,12 @@
                     <a href="https://github.com/wubh2012" target="_blank" title="GitHub">
                       
                         <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/twbh_wubh" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
                   </span>
                 
             </div>
@@ -700,7 +729,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">2.7k</span>
+    <span title="Site words total count">3.2k</span>
   
 </div>
 

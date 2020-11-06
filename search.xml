@@ -19,11 +19,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>test1</title>
-    <url>/2020/06/18/test1/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>猎豹行动读书笔记</title>
     <url>/2020/06/22/%E7%8C%8E%E8%B1%B9%E8%A1%8C%E5%8A%A8%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h2 id="传统模式的问题"><a href="#传统模式的问题" class="headerlink" title="传统模式的问题"></a>传统模式的问题</h2><p>瀑布模型对业务部门的痛点</p>
@@ -133,7 +128,7 @@
 <p>frpc.ini</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[common]</span><br><span class="line">server_addr &#x3D; x.x.x.x</span><br><span class="line">server_port &#x3D; 7000</span><br><span class="line">token &#x3D; 123456</span><br><span class="line">[ssh]</span><br><span class="line">type &#x3D; tcp</span><br><span class="line">local_ip &#x3D; 127.0.0.1</span><br><span class="line">local_port &#x3D; 22</span><br><span class="line">remote_port &#x3D; 6000</span><br><span class="line">[mstsc]</span><br><span class="line">type &#x3D; tcp</span><br><span class="line">local_ip &#x3D; 127.0.0.1</span><br><span class="line">local_port &#x3D; 3389</span><br><span class="line">remote_port &#x3D; 7402</span><br><span class="line">[web]</span><br><span class="line">type &#x3D; http</span><br><span class="line">local_ip &#x3D; 127.0.0.1</span><br><span class="line">local_port &#x3D; 8078</span><br><span class="line">custom_domains &#x3D; www.youdomain.com</span><br></pre></td></tr></table></figure>
 
-<p>这里的配置文件多了一个 token的配置，token 用于验证连接，只有服务器端和客户端的 token 相同才能正常访问。重新启动 frps 和 frpc，然后我们就可以通过 <a href="http://www.youdomain.com/" target="_blank" rel="noopener">www.youdomain.com</a>:8080 访问 内网地址的8078 端口了，8080端口是 frps 中配置的 vhost_http_port 端口。</p>
+<p>这里的配置文件多了一个 token的配置，token 用于验证连接，只有服务器端和客户端的 token 相同才能正常访问,避免被别人恶意攻击。重新启动 frps 和 frpc，然后我们就可以通过 <a href="http://www.youdomain.com/" target="_blank" rel="noopener">www.youdomain.com</a>:8080 访问 内网地址的8078 端口了，8080端口是 frps 中配置的 vhost_http_port 端口。</p>
 <p><img src="https://gitee.com/wubh/blogimg/raw/master/img/20201102173915.png" alt="image-20201102173744935"></p>
 <p>*<em>没有域名的配置 *</em></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># frps.ini</span><br><span class="line">[common]</span><br><span class="line">bind_addr &#x3D; 0.0.0.0</span><br><span class="line">bind_port &#x3D; 7000</span><br><span class="line">privilege_token &#x3D; 12345678</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># frpc.ini客户端配置</span><br><span class="line">[common]</span><br><span class="line">server_addr &#x3D; 服务端IP</span><br><span class="line">server_port &#x3D; 7000</span><br><span class="line">privilege_token &#x3D; 12345678</span><br><span class="line"></span><br><span class="line">[httpname]</span><br><span class="line">type &#x3D; tcp</span><br><span class="line">local_port &#x3D; 80</span><br><span class="line">local_ip &#x3D; 127.0.0.1</span><br><span class="line">remote_port &#x3D; 8080</span><br><span class="line"></span><br><span class="line">通过 服务端IP:8080既可访问到对应穿透的服务</span><br></pre></td></tr></table></figure>
@@ -151,5 +146,60 @@
 </li>
 </ol>
 ]]></content>
+      <tags>
+        <tag>工具</tag>
+        <tag>frp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在windows上在windows上设置frp开机自动启动</title>
+    <url>/2020/11/05/%E5%9C%A8windows%E4%B8%8A%E8%AE%BE%E7%BD%AEfrp%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8/</url>
+    <content><![CDATA[<h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>在之前的文章中介绍了在 Windows 上运行frp的客户端需要在命令行中输入一下命令</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">frpc.exe -c frpc.ini</span><br></pre></td></tr></table></figure>
+
+<p>但是如何不小心关掉了命令行窗口就需要手动重新打开，当然也可以把上面的命令复制后另存为run.bat文件，下次双击运行就可以使用，但是我们还是想实现开机自动运行，那么该如何做呢？</p>
+<p>这个时候我们需要借助第三方的工具 <a href="https://nssm.cc/" target="_blank" rel="noopener">nssm</a>， nssm 官网的介绍如下</p>
+<blockquote>
+<p><em>nssm</em> is a service helper which doesn’t suck. <em>srvany</em> and other service helper programs suck because they don’t handle failure of the application running as a service. If you use such a program you may see a service listed as started when in fact the application has died. <em>nssm</em> monitors the running service and will restart it if it dies. With <em>nssm</em> you know that if a service says it’s running, it really is. Alternatively, if your application is well-behaved you can configure <em>nssm</em> to absolve all responsibility for restarting it and let Windows take care of recovery actions.</p>
+</blockquote>
+<p>大概的意思就是 nssm 可以将程序注册成 windows 服务，并且会监听正在运行的服务，当服务死了之后会自动重启。</p>
+<h3 id="下载-nssm"><a href="#下载-nssm" class="headerlink" title="下载 nssm"></a>下载 nssm</h3><p>先去 <a href="https://nssm.cc/download" target="_blank" rel="noopener">https://nssm.cc/download</a> 这个地址下载 nssm, 下载后的文件非常小只有 300+ KB，算的上是短小精悍。</p>
+<p><img src="https://gitee.com/wubh/blogimg/raw/master/img/20201106173532.png" alt="image-20201105213254604"></p>
+<h3 id="如何使用-nssm"><a href="#如何使用-nssm" class="headerlink" title="如何使用 nssm"></a>如何使用 nssm</h3><ol>
+<li>进入命令行窗口，输入<code>nssm install</code></li>
+</ol>
+<p><img src="https://gitee.com/wubh/blogimg/raw/master/img/20201106173550.png" alt="image-20201105213622063"></p>
+<p><img src="https://gitee.com/wubh/blogimg/raw/master/img/20201106173557.png" alt="image-20201105213739577"></p>
+<ol start="2">
+<li>执行之后会显示下面这个页面，选择 frpc 程序的路径，以及启动的参数</li>
+</ol>
+<p><img src="https://gitee.com/wubh/blogimg/raw/master/img/20201106173601.png" alt="image-20201105213843898"></p>
+<p><img src="https://gitee.com/wubh/blogimg/raw/master/img/20201106173603.png" alt="image-20201105214258612"></p>
+<ol start="3">
+<li>填写服务的显示名称以及服务说明，还有启动方式，默认是自动自动</li>
+</ol>
+<p><img src="https://gitee.com/wubh/blogimg/raw/master/img/20201106173606.png" alt="image-20201105214507281"></p>
+<ol start="4">
+<li><p>配置程序输入和输出日志存放位置（可选）</p>
+<p><img src="https://gitee.com/wubh/blogimg/raw/master/img/20201106173609.png" alt="image-20201105215008339"></p>
+<ol start="5">
+<li>点击 <code>Install service</code> 按钮安装服务</li>
+</ol>
+</li>
+</ol>
+<h3 id="管理服务"><a href="#管理服务" class="headerlink" title="管理服务"></a>管理服务</h3><p>按下<code>Win+R</code>键，在运行中输入<code>service.msc</code> 命令打开服务管理器，我们就可以看到刚刚安装的frp服务了，然后我们就向其他windows服务一样控制它启动，停止，重启了。</p>
+<p><img src="https://gitee.com/wubh/blogimg/raw/master/img/20201106173612.png" alt="image-20201105215255665"></p>
+<p><img src="https://gitee.com/wubh/blogimg/raw/master/img/20201106173615.png" alt="image-20201105215411888"></p>
+<p>当前我们可以通过 nssm 的命令行的形式控制它</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 启动</span><br><span class="line">nssm start &lt;servicename&gt;</span><br><span class="line"></span><br><span class="line"># 停止</span><br><span class="line">nssm stop &lt;servicename&gt;</span><br><span class="line"></span><br><span class="line"># 重启</span><br><span class="line">nssm restart &lt;servicename&gt;</span><br><span class="line"></span><br><span class="line"># 修改服务配置</span><br><span class="line">nssm edit &lt;servicename&gt;</span><br><span class="line"></span><br><span class="line"># 删除服务 </span><br><span class="line">nssm remove &lt;servicename&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>参考： <a href="http://www.cnblogs.com/TianFang/p/7912648.html" target="_blank" rel="noopener">www.cnblogs.com/TianFang/p/7912648.html</a></p>
+]]></content>
+      <tags>
+        <tag>工具</tag>
+        <tag>frp</tag>
+      </tags>
   </entry>
 </search>
