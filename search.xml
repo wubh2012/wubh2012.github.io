@@ -220,4 +220,35 @@
         <tag>Markdown</tag>
       </tags>
   </entry>
+  <entry>
+    <title>frp搭配nginx将https请求映射到内网</title>
+    <url>/2020/12/19/frp%E6%90%AD%E9%85%8Dnginx%E5%B0%86https%E8%AF%B7%E6%B1%82%E6%98%A0%E5%B0%84%E5%88%B0%E5%86%85%E7%BD%91/</url>
+    <content><![CDATA[<p>最近做微信小程序开发，发现正式发布的时候后台webapi服务必须是 https 协议的，当然开发的时候可以勾选不校验域名<br><img src="frp%E6%90%AD%E9%85%8Dnginx%E5%B0%86https%E8%AF%B7%E6%B1%82%E6%98%A0%E5%B0%84%E5%88%B0%E5%86%85%E7%BD%91.assets/image-20201219160934257.png" alt="image-20201219160934257"></p>
+<p>我们之前使用 frp 将内网服务映射出去后只能提供 http 协议的形式访问，无法使用 https 协议，这个怎么办呢？</p>
+<p>经过一番资料查找，发现需要搭配 nginx 一起使用就可以解决</p>
+<p>首先我们需要给我们的域名申请一个免费的SSL证书，腾讯云和阿里云都有免费的。</p>
+<p>第二步，配置内网 fprc .ini ，这里我们将本地的 8099 端口映射到远程的 8099 端口</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[common]</span><br><span class="line">server_addr &#x3D; 云服务器IP地址</span><br><span class="line">server_port &#x3D; 7000</span><br><span class="line">token &#x3D; 123456</span><br><span class="line">[wx_webapi]</span><br><span class="line">type &#x3D; tcp</span><br><span class="line">local_ip &#x3D; 127.0.0.1</span><br><span class="line">local_port &#x3D; 8099</span><br><span class="line">remote_port &#x3D; 8099</span><br></pre></td></tr></table></figure>
+
+<p>服务器端的配置 frps.ini</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[common]</span><br><span class="line">bind_port &#x3D; 7000</span><br><span class="line">token &#x3D; 123456</span><br></pre></td></tr></table></figure>
+
+<p>这样我们就可以通过访问 http://云服务器IP地址:8099 访问内网的webapi了</p>
+<p>第三步，在云服务器上使用下面的命令安装 nginx</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo apt-get install nginx</span><br></pre></td></tr></table></figure>
+
+<p>第四步，将申请的SSL证书复制到云服务器上，并开始配置 nginx ，</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo vi &#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">    ssl on;</span><br><span class="line">    listen 18099;</span><br><span class="line">    server_name www.abc.com;      # 域名</span><br><span class="line">    ssl_certificate server.crt;      # 配置 SSL 证书</span><br><span class="line">    ssl_certificate_key server.key;  # 配置 SSL 证书</span><br><span class="line">    ssl_session_timeout 5m;</span><br><span class="line"></span><br><span class="line">    location &#x2F; &#123;</span><br><span class="line">        proxy_pass http:&#x2F;&#x2F;127.0.0.1:8099; #外部请求18099端口时，nginx会将请求代理转发到本地的8099端口</span><br><span class="line">        proxy_set_header Host $http_host;</span><br><span class="line">        proxy_set_header Connection &quot;Upgrade&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样外部请求18099端口时，nginx会将请求代理转发到本地的8099端口，也就是 frp 内网穿透的端口，</p>
+<p>那么当我们请求 <a href="https://www.abc.com:18099" target="_blank" rel="noopener">https://www.abc.com:18099</a>  时，实际上请求的内网服务器的 8099 端口</p>
+<p>这样我们就解决了https访问的问题了！</p>
+]]></content>
+      <tags>
+        <tag>frp</tag>
+        <tag>nginx</tag>
+      </tags>
+  </entry>
 </search>
