@@ -263,7 +263,7 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 查看 Systemd 版本</span><br><span class="line">systemctl --version</span><br></pre></td></tr></table></figure>
 
 <p>frp 也是支持 Systemd 的，我们下载的frp文件当中就包含了一个 systemd 文件夹，里面就包含了 frps 和 frpc 的服务配置文件</p>
-<p><img src="frp%E4%BD%BF%E7%94%A8systemd%E5%9C%A8linux%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%9E%E7%8E%B0%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E8%BF%90%E8%A1%8C.assets/image-20201220160339843.png" alt="image-20201220160339843"></p>
+<p><img src="https://gitee.com/wubh/blogimg/raw/master/img/20201220165016.png" alt="image-20201220160339843"></p>
 <p>我们使用 cat 命令查看一下配置文件内容 <code>cat frps.service</code></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description&#x3D;Frp Server Service</span><br><span class="line">After&#x3D;network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type&#x3D;simple</span><br><span class="line">User&#x3D;nobody</span><br><span class="line">Restart&#x3D;on-failure</span><br><span class="line">RestartSec&#x3D;5s</span><br><span class="line">ExecStart&#x3D;&#x2F;usr&#x2F;bin&#x2F;frps -c &#x2F;etc&#x2F;frp&#x2F;frps.ini</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy&#x3D;multi-user.target</span><br></pre></td></tr></table></figure>
 
@@ -274,12 +274,12 @@
 
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 重新加载 system 配置文件</span><br><span class="line">sudo systemctl daemon-reload</span><br><span class="line"># 设置 frps 开机启动</span><br><span class="line">sudo systemctl enable frps.service</span><br></pre></td></tr></table></figure>
 
-<p><img src="frp%E4%BD%BF%E7%94%A8systemd%E5%9C%A8linux%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%9E%E7%8E%B0%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E8%BF%90%E8%A1%8C.assets/image-20201220164646349.png" alt="image-20201220164646349"></p>
+<p><img src="https://gitee.com/wubh/blogimg/raw/master/img/20201220165207.png" alt="image-20201220164646349"></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 启动 frps 服务</span><br><span class="line">sudo systemctl start frps.service</span><br><span class="line"># 查看服务器状态</span><br><span class="line">sudo systemctl status frps.service</span><br></pre></td></tr></table></figure>
 
 
 
-<p><img src="frp%E4%BD%BF%E7%94%A8systemd%E5%9C%A8linux%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%9E%E7%8E%B0%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E8%BF%90%E8%A1%8C.assets/image-20201220164606524.png" alt="image-20201220164606524"></p>
+<p><img src="https://gitee.com/wubh/blogimg/raw/master/img/20201220165202.png" alt="image-20201220164606524"></p>
 <p>参考链接 </p>
 <ul>
 <li><a href="http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html" target="_blank" rel="noopener">Systemd 入门教程：命令篇</a></li>
