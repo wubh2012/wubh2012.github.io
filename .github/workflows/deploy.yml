@@ -37,17 +37,11 @@ jobs:
           yarn run hexo clean
           yarn run hexo generate
 
-      - name: Hexo Deploy           # 部署步骤，这里以 hexo deploy 为例
-        env:
-          SSH_PRIVATE: ${{ secrets.DEPLOY_KEY }}
-          GIT_NAME: "wubh2012"
-          GIT_EMAIL: "wubh2012@163.com"
-        run: |
-          mkdir -p ~/.ssh/
-          echo "$SSH_PRIVATE" | tr -d '\r' > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan github.com >> ~/.ssh/known_hosts
-          git config --global user.name "$GIT_NAME"
-          git config --global user.email "$GIT_EMAIL"
-          yarn run hexo deploy
-          
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.DEPLOY_KEY }}
+          cname: blog.aalmix.com
+          publish_dir: ./public
+
+
