@@ -1,0 +1,47 @@
+name: Hexo Blog CI
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # every day at midnight
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true  
+          fetch-depth: 0   
+
+      - name: Setup Node # 安装 Node 环境
+        uses: actions/setup-node@v2
+        with:
+          node-version: '12.x'
+
+      - name: Cache dependencies
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      
+      - name: Hexo Generate         # 安装 Hexo 依赖并且生成静态文件
+        run: |
+          rm -f .yarnclean
+          yarn --frozen-lockfile --ignore-engines --ignore-optional --non-interactive --silent --ignore-scripts --production=false
+          rm -rf ./public
+          yarn run hexo clean
+          yarn run hexo generate
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          cname: blog.aalmix.com
+          publish_dir: ./public
+          user_name: "github-actions[bot]"
+          user_email: "github-actions[bot]@users.noreply.github.com"
