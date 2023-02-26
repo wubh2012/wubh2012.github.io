@@ -25,7 +25,7 @@
 <meta property="og:description" content="还有一种方式就是使用 typora 软件编写 md 文件，设置默认图片可以和文章保存在一个目录，这样就不用额外搭建图床了。  使用七牛搭建图床的限制 有一个备案的域名，作为静态资源的域名 七牛账号必须实名认证  使用七牛的优点 每月免费 10GB 流量  搭配 PicGo 使用我一般使用 vscode 编写博客，上传图片时需要借助 PicGo 插件，它默认使用 SM.SM 图床。 PicGo 配">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-05-25T14:19:30.000Z">
-<meta property="article:modified_time" content="2023-02-26T14:02:15.835Z">
+<meta property="article:modified_time" content="2023-02-26T14:05:32.653Z">
 <meta property="article:author" content="aalmix">
 <meta property="article:tag" content="博客">
 <meta property="article:tag" content="hugo">
@@ -398,6 +398,50 @@
             </div>
 
             
+  
+  
+    <article id="comments" lazyload>
+      
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"wubh2012/wubh2012.github.io","repo-id":"R_kgDOJAMDTQ","category":"Announcements","category-id":"DIC_kwDOJAMDTc4CUegN","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
+          }
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
+      });
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
           </article>
         </div>
       </div>
