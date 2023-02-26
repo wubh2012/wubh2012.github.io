@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://blog.aalmix.com/2022/04/12/use-hugo-build-your-blog/</loc>
-    <lastmod>2023-02-26</lastmod>
-  </url>
-  <url>
     <loc>https://blog.aalmix.com/2020/11/02/%E4%BD%BF%E7%94%A8frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/</loc>
     <lastmod>2023-02-26</lastmod>
   </url>
@@ -18,6 +14,22 @@
   </url>
   <url>
     <loc>https://blog.aalmix.com/2020/10/01/%E7%8C%8E%E8%B1%B9%E8%A1%8C%E5%8A%A8%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2023-02-26</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.aalmix.com/2021/05/19/nginx-run-as-windows-service/</loc>
+    <lastmod>2023-02-26</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.aalmix.com/2021/05/19/nginx-support-many-domain/</loc>
+    <lastmod>2023-02-26</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.aalmix.com/2022/04/12/use-hugo-build-your-blog/</loc>
+    <lastmod>2023-02-26</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.aalmix.com/2020/12/20/frp%E4%BD%BF%E7%94%A8systemd%E5%9C%A8linux%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%9E%E7%8E%B0%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E8%BF%90%E8%A1%8C/</loc>
     <lastmod>2023-02-26</lastmod>
   </url>
   <url>
@@ -49,23 +61,11 @@
     <lastmod>2023-02-26</lastmod>
   </url>
   <url>
-    <loc>https://blog.aalmix.com/2021/05/19/nginx-run-as-windows-service/</loc>
-    <lastmod>2023-02-26</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.aalmix.com/2021/05/19/nginx-support-many-domain/</loc>
-    <lastmod>2023-02-26</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.aalmix.com/2020/12/20/JavaScript%20%E5%87%BD%E6%95%B0%E4%BD%9C%E7%94%A8%E5%9F%9F%E8%A7%A3%E9%87%8A/</loc>
-    <lastmod>2023-02-26</lastmod>
-  </url>
-  <url>
     <loc>https://blog.aalmix.com/2022/04/09/docker-guide/</loc>
     <lastmod>2023-02-26</lastmod>
   </url>
   <url>
-    <loc>https://blog.aalmix.com/2020/12/20/frp%E4%BD%BF%E7%94%A8systemd%E5%9C%A8linux%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%9E%E7%8E%B0%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E8%BF%90%E8%A1%8C/</loc>
+    <loc>https://blog.aalmix.com/2020/12/20/JavaScript%20%E5%87%BD%E6%95%B0%E4%BD%9C%E7%94%A8%E5%9F%9F%E8%A7%A3%E9%87%8A/</loc>
     <lastmod>2023-02-26</lastmod>
   </url>
 </urlset> 
