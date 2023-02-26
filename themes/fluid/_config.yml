@@ -438,6 +438,8 @@ footer:
     # Data source. If use leancloud, you need to set the parameter in `web_analytics: leancloud`
     # Options: busuanzi | leancloud
     source: "busuanzi"
+    pv_format: "总访问量 {} 次"  # 显示的文本，{}是数字的占位符（必须包含)，下同
+    uv_format: "总访客数 {} 人"
 
   # 国内大陆服务器的备案信息
   # For Chinese mainland website policy, other areas keep disable
@@ -869,10 +871,10 @@ cusdis:
 # Based on GitHub Discussions, similar to Utterances
 # See: https://giscus.app/
 giscus:
-  repo:
-  repo-id:
-  category:
-  category-id:
+  repo: wubh2012/wubh2012.github.io
+  repo-id: R_kgDOJAMDTQ
+  category: Announcements
+  category-id: DIC_kwDOJAMDTc4CUegN
   theme-light: light
   theme-dark: dark
   mapping: pathname
