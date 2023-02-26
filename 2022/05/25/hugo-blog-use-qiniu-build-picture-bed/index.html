@@ -20,12 +20,12 @@
     <meta name="description" content="还有一种方式就是使用 typora 软件编写 md 文件，设置默认图片可以和文章保存在一个目录，这样就不用额外搭建图床了。  使用七牛搭建图床的限制 有一个备案的域名，作为静态资源的域名 七牛账号必须实名认证  使用七牛的优点 每月免费 10GB 流量  搭配 PicGo 使用我一般使用 vscode 编写博客，上传图片时需要借助 PicGo 插件，它默认使用 SM.SM 图床。 PicGo 配">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用hugo搭建博客 - 使用七牛搭建博客的图床">
-<meta property="og:url" content="https://wubh2012.github.io/2022/05/25/hugo-blog-use-qiniu-build-picture-bed/index.html">
+<meta property="og:url" content="https://blog.aalmix.com/2022/05/25/hugo-blog-use-qiniu-build-picture-bed/index.html">
 <meta property="og:site_name" content="水果芋头">
 <meta property="og:description" content="还有一种方式就是使用 typora 软件编写 md 文件，设置默认图片可以和文章保存在一个目录，这样就不用额外搭建图床了。  使用七牛搭建图床的限制 有一个备案的域名，作为静态资源的域名 七牛账号必须实名认证  使用七牛的优点 每月免费 10GB 流量  搭配 PicGo 使用我一般使用 vscode 编写博客，上传图片时需要借助 PicGo 插件，它默认使用 SM.SM 图床。 PicGo 配">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-05-25T14:19:30.000Z">
-<meta property="article:modified_time" content="2023-02-26T13:28:00.758Z">
+<meta property="article:modified_time" content="2023-02-26T13:31:46.230Z">
 <meta property="article:author" content="aalmix">
 <meta property="article:tag" content="博客">
 <meta property="article:tag" content="hugo">
@@ -74,7 +74,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"wubh2012.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"blog.aalmix.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -331,7 +331,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>使用hugo搭建博客 - 使用七牛搭建博客的图床</div>
-      <div>https://wubh2012.github.io/2022/05/25/hugo-blog-use-qiniu-build-picture-bed/</div>
+      <div>https://blog.aalmix.com/2022/05/25/hugo-blog-use-qiniu-build-picture-bed/</div>
     </div>
     <div class="license-meta">
       

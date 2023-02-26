@@ -20,7 +20,7 @@
     <meta name="description" content="Systemd 是 Linux 系统系统工具，用来启动守护进程，已经成为了大多数发行版本的标准配置。 12# 查看 Systemd 版本systemctl --version    frp 也是支持 Systemd 的，我们下载的frp文件当中就包含了一个 systemd 文件夹，里面就包含了 frps 和 frpc 的服务配置文件  我们使用 cat 命令查看一下配置文件内容 cat frps.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="frp使用systemd在linux系统下实现开机自动运行">
-<meta property="og:url" content="https://wubh2012.github.io/2020/12/20/frp%E4%BD%BF%E7%94%A8systemd%E5%9C%A8linux%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%9E%E7%8E%B0%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E8%BF%90%E8%A1%8C/index.html">
+<meta property="og:url" content="https://blog.aalmix.com/2020/12/20/frp%E4%BD%BF%E7%94%A8systemd%E5%9C%A8linux%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%9E%E7%8E%B0%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E8%BF%90%E8%A1%8C/index.html">
 <meta property="og:site_name" content="水果芋头">
 <meta property="og:description" content="Systemd 是 Linux 系统系统工具，用来启动守护进程，已经成为了大多数发行版本的标准配置。 12# 查看 Systemd 版本systemctl --version    frp 也是支持 Systemd 的，我们下载的frp文件当中就包含了一个 systemd 文件夹，里面就包含了 frps 和 frpc 的服务配置文件  我们使用 cat 命令查看一下配置文件内容 cat frps.">
 <meta property="og:locale" content="zh_CN">
@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://static.aalmix.com/20201220165207.png">
 <meta property="og:image" content="https://static.aalmix.com/20201220165202.png">
 <meta property="article:published_time" content="2020-12-20T15:51:29.000Z">
-<meta property="article:modified_time" content="2023-02-26T13:28:00.754Z">
+<meta property="article:modified_time" content="2023-02-26T13:31:46.226Z">
 <meta property="article:author" content="aalmix">
 <meta property="article:tag" content="frp">
 <meta property="article:tag" content="systemd">
@@ -78,7 +78,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"wubh2012.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"blog.aalmix.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -346,7 +346,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>frp使用systemd在linux系统下实现开机自动运行</div>
-      <div>https://wubh2012.github.io/2020/12/20/frp使用systemd在linux系统下实现开机自动运行/</div>
+      <div>https://blog.aalmix.com/2020/12/20/frp使用systemd在linux系统下实现开机自动运行/</div>
     </div>
     <div class="license-meta">
       

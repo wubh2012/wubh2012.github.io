@@ -20,14 +20,14 @@
     <meta name="description" content="最近客户反映新闻内容上传图片有的时候会出现失败的情况，一开始判断是图片太大导致超时出现的问题，仔细查看发现上传文件的请求出现了 413 request entity too large 的错误，而且这个错误是 nginx 返回的。   查找资料发现 nginx 默认请求的大小只有 1M，后来在 nginx.conf 配置文件中改成 100M 就解决了这个问题。 12345# nginx.conf">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nginx_413_request_entity_too_large">
-<meta property="og:url" content="https://wubh2012.github.io/2021/05/19/nginx-413-request-entity-too-large/index.html">
+<meta property="og:url" content="https://blog.aalmix.com/2021/05/19/nginx-413-request-entity-too-large/index.html">
 <meta property="og:site_name" content="水果芋头">
 <meta property="og:description" content="最近客户反映新闻内容上传图片有的时候会出现失败的情况，一开始判断是图片太大导致超时出现的问题，仔细查看发现上传文件的请求出现了 413 request entity too large 的错误，而且这个错误是 nginx 返回的。   查找资料发现 nginx 默认请求的大小只有 1M，后来在 nginx.conf 配置文件中改成 100M 就解决了这个问题。 12345# nginx.conf">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://static.aalmix.com/20210519145507.png">
 <meta property="og:image" content="https://static.aalmix.com/20210519145510.png">
 <meta property="article:published_time" content="2021-05-19T13:40:07.000Z">
-<meta property="article:modified_time" content="2023-02-26T13:28:00.758Z">
+<meta property="article:modified_time" content="2023-02-26T13:31:46.230Z">
 <meta property="article:author" content="aalmix">
 <meta property="article:tag" content="nginx">
 <meta name="twitter:card" content="summary_large_image">
@@ -75,7 +75,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"wubh2012.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"blog.aalmix.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -322,7 +322,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>nginx_413_request_entity_too_large</div>
-      <div>https://wubh2012.github.io/2021/05/19/nginx-413-request-entity-too-large/</div>
+      <div>https://blog.aalmix.com/2021/05/19/nginx-413-request-entity-too-large/</div>
     </div>
     <div class="license-meta">
       
