@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://blog.aalmix.com/2021/05/19/nginx-support-many-domain/</loc>
+    <lastmod>2023-02-26</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.aalmix.com/2022/04/12/use-hugo-build-your-blog/</loc>
+    <lastmod>2023-02-26</lastmod>
+  </url>
+  <url>
     <loc>https://blog.aalmix.com/2020/11/02/%E4%BD%BF%E7%94%A8frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/</loc>
     <lastmod>2023-02-26</lastmod>
   </url>
@@ -17,15 +25,11 @@
     <lastmod>2023-02-26</lastmod>
   </url>
   <url>
+    <loc>https://blog.aalmix.com/2021/05/19/nginx-413-request-entity-too-large/</loc>
+    <lastmod>2023-02-26</lastmod>
+  </url>
+  <url>
     <loc>https://blog.aalmix.com/2021/05/19/nginx-run-as-windows-service/</loc>
-    <lastmod>2023-02-26</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.aalmix.com/2021/05/19/nginx-support-many-domain/</loc>
-    <lastmod>2023-02-26</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.aalmix.com/2022/04/12/use-hugo-build-your-blog/</loc>
     <lastmod>2023-02-26</lastmod>
   </url>
   <url>
@@ -58,10 +62,6 @@
   </url>
   <url>
     <loc>https://blog.aalmix.com/2022/07/30/make-a-beautiful-windows-terminal/</loc>
-    <lastmod>2023-02-26</lastmod>
-  </url>
-  <url>
-    <loc>https://blog.aalmix.com/2021/05/19/nginx-413-request-entity-too-large/</loc>
     <lastmod>2023-02-26</lastmod>
   </url>
   <url>
