@@ -1,0 +1,680 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="baidu-site-verification" content="codeva-ITYFZTo6I7" />
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="aalmix">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="今天我们来讲讲如何使用 Hugo 搭建自己的博客。 下载 Hugo首先我们到 Hugo Release 页面根据自己的操作系统版本下载 Hugo，本文以 Windows 为例，我们下载 Windows x64 版本，然后将文件解压到 D:&#x2F;software&#x2F;hugo 目录下   然后配置一下系统的环境变量，打开电脑的高级系统设置，设置系统变量，在 PATH变量后面添加 Hugo 的目录 D:&#x2F;so">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何使用 hugo 搭建自己的博客">
+<meta property="og:url" content="https://wubh2012.github.io/2022/04/12/use-hugo-build-your-blog/index.html">
+<meta property="og:site_name" content="水果芋头">
+<meta property="og:description" content="今天我们来讲讲如何使用 Hugo 搭建自己的博客。 下载 Hugo首先我们到 Hugo Release 页面根据自己的操作系统版本下载 Hugo，本文以 Windows 为例，我们下载 Windows x64 版本，然后将文件解压到 D:&#x2F;software&#x2F;hugo 目录下   然后配置一下系统的环境变量，打开电脑的高级系统设置，设置系统变量，在 PATH变量后面添加 Hugo 的目录 D:&#x2F;so">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://static.aalmix.com/20220417210225.png">
+<meta property="og:image" content="https://static.aalmix.com/20220417210629.png">
+<meta property="og:image" content="https://static.aalmix.com/20220417211154.png">
+<meta property="og:image" content="https://static.aalmix.com/20220417211401.png">
+<meta property="og:image" content="https://static.aalmix.com/20220420211247.png">
+<meta property="og:image" content="https://static.aalmix.com/20220420211620.png">
+<meta property="og:image" content="https://static.aalmix.com/20220525212029.png">
+<meta property="og:image" content="https://static.aalmix.com/20220525212122.png">
+<meta property="og:image" content="https://static.aalmix.com/20220525212203.png">
+<meta property="article:published_time" content="2022-04-12T06:13:41.000Z">
+<meta property="article:modified_time" content="2023-02-26T13:03:17.028Z">
+<meta property="article:author" content="aalmix">
+<meta property="article:tag" content="博客">
+<meta property="article:tag" content="hugo">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://static.aalmix.com/20220417210225.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>如何使用 hugo 搭建自己的博客 - 水果芋头</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"wubh2012.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>水果芋头</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="如何使用 hugo 搭建自己的博客"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-04-12 06:13" pubdate>
+          2022年4月12日 早上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          37 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">如何使用 hugo 搭建自己的博客</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>今天我们来讲讲如何使用 Hugo 搭建自己的博客。</p>
+<h2 id="下载-Hugo"><a href="#下载-Hugo" class="headerlink" title="下载 Hugo"></a>下载 Hugo</h2><p>首先我们到 <a target="_blank" rel="noopener" href="https://github.com/gohugoio/hugo/releases">Hugo Release</a> 页面根据自己的操作系统版本下载 Hugo，本文以 Windows 为例，我们下载 Windows x64 版本，然后将文件解压到 <code>D:/software/hugo</code> 目录下</p>
+<p><img src="https://static.aalmix.com/20220417210225.png" srcset="/img/loading.gif" lazyload alt="20220417210225"></p>
+<p><img src="https://static.aalmix.com/20220417210629.png" srcset="/img/loading.gif" lazyload alt="20220417210629"></p>
+<p>然后配置一下系统的环境变量，打开电脑的高级系统设置，设置系统变量，在 <code>PATH</code>变量后面添加 Hugo 的目录 <code>D:/software/hugo</code>，然后保存，关闭系统设置，然后打开命令行，进入 <code>D:/software/hugo</code> 目录，执行 <code>hugo version</code> 命令验证一下即可，如下图所示：</p>
+<p><img src="https://static.aalmix.com/20220417211154.png" srcset="/img/loading.gif" lazyload alt="20220417211154"></p>
+<p><img src="https://static.aalmix.com/20220417211401.png" srcset="/img/loading.gif" lazyload alt="20220417211401"></p>
+<p>配置好环境变量后我们就可以在任意一个目录下执行 <code>hugo</code> 命令了。</p>
+<h2 id="创建博客站点"><a href="#创建博客站点" class="headerlink" title="创建博客站点"></a>创建博客站点</h2><p>我们可以使用 <code>hugo new site myblog</code> 创建一个新的博客站点，然后在 <code>myblog</code> 目录下执行 <code>hugo server</code> 命令，hugo 默认端口使用的是 1313, 我们在浏览器中输入 <code>http://localhost:1313</code> 就可以访问了如下图所示：</p>
+<p><img src="https://static.aalmix.com/20220420211247.png" srcset="/img/loading.gif" lazyload alt="20220420211247"><br>由于我们目前还没有写任何文章，所以看到的是一个空白的页面。<br><img src="https://static.aalmix.com/20220420211620.png" srcset="/img/loading.gif" lazyload alt="20220420211620"></p>
+<h3 id="添加主题"><a href="#添加主题" class="headerlink" title="添加主题"></a>添加主题</h3><p>在 myblog 根目录下，运行下面命令，添加主题 <a target="_blank" rel="noopener" href="https://github.com/forecho/hugo-theme-echo">hugo-theme-echo</a></p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs awk">git init <span class="hljs-comment"># 初始化 git</span><br>git submodule add https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/forecho/</span>hugo-theme-echo.git themes/echo<br>cd themes<span class="hljs-regexp">/echo # 进入 themes/</span>echo 目录<br>npm ci <span class="hljs-comment"># 本地开发才需要</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="修改-hugo-配置"><a href="#修改-hugo-配置" class="headerlink" title="修改 hugo 配置"></a>修改 hugo 配置</h3><p>大家可以根据我的 <a target="_blank" rel="noopener" href="https://github.com/wubh2012/wubh2012.github.io/blob/master/config.toml">config.toml</a> 文件进行修改。</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">baseUrl</span> = <span class="hljs-string">&quot;https://wubh2012.githuo.io&quot;</span><br><span class="hljs-attr">languageCode</span> = <span class="hljs-string">&quot;en-us&quot;</span><br><span class="hljs-attr">title</span> = <span class="hljs-string">&quot;AALMIX&#x27;s Blog&quot;</span><br><span class="hljs-attr">theme</span> = <span class="hljs-string">&quot;echo&quot;</span><br><span class="hljs-attr">DefaultContentLanguage</span> = <span class="hljs-string">&quot;cn&quot;</span><br><span class="hljs-comment"># 自动检测是否包含中文/日文/韩文，该参数会影响摘要和字数统计功能，建议设置为 true</span><br><span class="hljs-attr">hasCJKLanguage</span> = <span class="hljs-literal">true</span><br><span class="hljs-comment"># 设置页面生成形式，将默认的网站路径/修改成.html</span><br><span class="hljs-attr">uglyURLs</span> = <span class="hljs-literal">true</span><br><span class="hljs-attr">googleAnalytics</span> = <span class="hljs-string">&quot;&quot;</span>      <span class="hljs-comment"># UA-XXXXXXXX-X</span><br><span class="hljs-attr">enableRobotsTXT</span> = <span class="hljs-literal">true</span><br><br><span class="hljs-comment">## 评论系统</span><br><span class="hljs-attr">changyanAppid</span> = <span class="hljs-string">&quot;&quot;</span> <span class="hljs-comment"># Changyan app id             # 畅言</span><br><span class="hljs-attr">changyanAppkey</span> = <span class="hljs-string">&quot;&quot;</span> <span class="hljs-comment"># Changyan app key</span><br><span class="hljs-attr">livereUID</span> = <span class="hljs-string">&quot;&quot;</span> <span class="hljs-comment"># LiveRe UID                  # 来必力</span><br><br><span class="hljs-section">[markup.highlight]</span><br><span class="hljs-attr">codeFences</span> = <span class="hljs-literal">true</span> <span class="hljs-comment"># 高亮 markdown 的代码块</span><br><span class="hljs-attr">guessSyntax</span> = <span class="hljs-literal">true</span> <span class="hljs-comment"># 高亮 markdown 中没有标注语言的代码块</span><br><span class="hljs-attr">hl_Lines</span> = <span class="hljs-string">&quot;&quot;</span><br><span class="hljs-attr">lineNoStart</span> = <span class="hljs-number">1</span><br><span class="hljs-attr">lineNos</span> = <span class="hljs-literal">true</span><br><span class="hljs-attr">lineNumbersInTable</span> = <span class="hljs-literal">true</span><br><span class="hljs-attr">noClasses</span> = <span class="hljs-literal">true</span><br><span class="hljs-attr">style</span> = <span class="hljs-string">&quot;dracula&quot;</span><br><span class="hljs-attr">tabWidth</span> = <span class="hljs-number">2</span><br><br><span class="hljs-comment"># https://gohugo.io/content-management/urls/#aliases</span><br><span class="hljs-section">[permalinks]</span><br><span class="hljs-attr">posts</span> = <span class="hljs-string">&quot;/:filename&quot;</span><br><br><span class="hljs-section">[outputFormats.RSS]</span><br><span class="hljs-attr">mediatype</span> = <span class="hljs-string">&quot;application/rss&quot;</span><br><span class="hljs-attr">baseName</span> = <span class="hljs-string">&quot;atom&quot;</span><br><br><span class="hljs-section">[services.rss]</span><br><span class="hljs-attr">limit</span> = <span class="hljs-number">20</span><br><br><span class="hljs-section">[author]</span><br><span class="hljs-attr">name</span> = <span class="hljs-string">&quot;AALMIX&quot;</span><br><span class="hljs-attr">avatar</span> = <span class="hljs-string">&quot;https://avatars.githubusercontent.com/u/22315624?s=400&amp;u=0f4091c87fa6cb1f7ed21d691a5e0bc3eb0b0814&amp;v=4&quot;</span><br><span class="hljs-attr">bio</span> = <span class="hljs-string">&quot; 一名普通的程序员 😀&quot;</span><br><span class="hljs-attr">homepage</span> = <span class="hljs-string">&quot;https://aalmix.com/&quot;</span><br><br><span class="hljs-section">[params]</span><br><span class="hljs-attr">favicon</span> = <span class="hljs-string">&quot;https://avatars.githubusercontent.com/u/22315624?s=460&amp;v=4&quot;</span><br><span class="hljs-attr">keywords</span> = <span class="hljs-string">&quot;AALMIX, 水果芋头,web develoment&quot;</span><br><span class="hljs-attr">description</span> = <span class="hljs-string">&quot;AALMIX, aalmix blog, aalmix 独立博客，水果芋头&quot;</span><br><span class="hljs-attr">toc</span> = <span class="hljs-literal">true</span><br><span class="hljs-attr">navItems</span> = [<br>  [<span class="hljs-string">&quot;HOME&quot;</span>, <span class="hljs-string">&quot;/&quot;</span>],<br>  [<span class="hljs-string">&quot;ARCHIVE&quot;</span>, <span class="hljs-string">&quot;/posts.html&quot;</span>],<br>  [<span class="hljs-string">&quot;ABOUT&quot;</span>, <span class="hljs-string">&quot;/about.html&quot;</span>],<br>  [<span class="hljs-string">&quot;RSS&quot;</span>, <span class="hljs-string">&quot;/atom.xml&quot;</span>]<br>]<br><span class="hljs-comment"># rss 全文输出</span><br><span class="hljs-attr">rssFullContent</span> = <span class="hljs-literal">true</span><br><span class="hljs-attr">uglyURLs</span> = <span class="hljs-literal">true</span><br><span class="hljs-attr">busuanzi</span> = <span class="hljs-literal">true</span> <span class="hljs-comment"># 是否使用不蒜子统计站点访问量</span><br><span class="hljs-attr">staticCDNPrefix</span> = <span class="hljs-string">&quot;https://cdn.bootcss.com/font-awesome/5.11.2&quot;</span><br><span class="hljs-attr">extraHead</span> = <span class="hljs-string">&#x27;&lt;script async src=&quot;https://www.googletagmanager.com/gtag/js?id=UA-xxx&quot;&gt;&lt;/script&gt;&#x27;</span><br><span class="hljs-attr">postAds</span> = <span class="hljs-string">&quot;&quot;</span><br><span class="hljs-comment">#profileAds = &#x27;&lt;div class=&quot;bg-white shadow&quot;&gt;&lt;img class=&quot; object-cover w-auto mx-auto mt-6&quot; src=&quot;https://blog-1251237404.cos.ap-guangzhou.myqcloud.com/20190424153337.png&quot; alt=&quot;微信打赏&quot;&gt;&lt;/div&gt;&#x27;</span><br><span class="hljs-attr">notFoundAds</span> = <span class="hljs-string">&#x27;&#x27;</span><br><br><span class="hljs-comment"># 开启版权声明，协议名字和链接都可以换</span><br><span class="hljs-section">[params.cc]</span><br><span class="hljs-attr">name</span> = <span class="hljs-string">&quot;署名 - 非商业性使用 4.0 国际 (CC BY-NC 4.0)&quot;</span><br><span class="hljs-attr">link</span> = <span class="hljs-string">&quot;https://creativecommons.org/licenses/by-nc/4.0/deed.zh&quot;</span><br><br><span class="hljs-comment"># 文章打赏</span><br><span class="hljs-section">[params.reward]</span><br><span class="hljs-attr">enable</span> = <span class="hljs-literal">false</span><br><span class="hljs-attr">title</span> = <span class="hljs-string">&quot;打赏&quot;</span><br><span class="hljs-attr">wechat</span> = <span class="hljs-string">&quot;&quot;</span> <span class="hljs-comment"># 微信二维码</span><br><span class="hljs-attr">alipay</span> = <span class="hljs-string">&quot;&quot;</span> <span class="hljs-comment"># 支付宝二维码</span><br><br><span class="hljs-comment">############## 评论系统  start ##############</span><br><br><br><span class="hljs-section">[params.utterances]</span> <span class="hljs-comment"># https://utteranc.es/</span><br><span class="hljs-attr">enable</span> = <span class="hljs-literal">true</span><br><span class="hljs-attr">owner</span> = <span class="hljs-string">&quot;wubh2012&quot;</span> <span class="hljs-comment"># Your GitHub ID</span><br><span class="hljs-attr">repo</span> = <span class="hljs-string">&quot;wubh2012.github.io&quot;</span> <span class="hljs-comment"># The repo to store comments</span><br><span class="hljs-attr">theme</span> = <span class="hljs-string">&quot;github-light&quot;</span><br><span class="hljs-attr">issueterm</span> = <span class="hljs-string">&quot;pathname&quot;</span><br><br><span class="hljs-comment">############ 评论系统  end ##############</span><br><span class="hljs-comment">## 社交链接</span><br><span class="hljs-section">[social]</span><br><span class="hljs-attr">github</span> = <span class="hljs-string">&quot;wubh2012&quot;</span><br><span class="hljs-attr">twitter</span> = <span class="hljs-string">&quot;twbh_wubh&quot;</span><br><span class="hljs-attr">cnblogs</span> = <span class="hljs-string">&quot;wubh&quot;</span><br><span class="hljs-attr">rss</span> = <span class="hljs-string">&quot;/atom.xml&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>然后我们再运行 <code>hugo server -D</code> 命令，在浏览器中输入 <code>http://localhost:1313</code> 就可以看到我们的新博客了。<br>补上带图片的。</p>
+<h2 id="写下你的第一篇文章"><a href="#写下你的第一篇文章" class="headerlink" title="写下你的第一篇文章"></a>写下你的第一篇文章</h2><p>使用命令 <code>hugo new posts/hello-world.md</code>, 会在 <code>content/posts/</code> 目录下创建一个 hello-world.md 文件，Hugo 允许你使用 yaml，toml 或者 json 语法在你每一篇文章的开头进行设置。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-meta">---</span><br><span class="hljs-comment"># 常用定义</span><br><span class="hljs-attr">title:</span> <span class="hljs-string">&quot;An Example Post&quot;</span>           <span class="hljs-comment"># 标题</span><br><span class="hljs-attr">date:</span> <span class="hljs-number">2022-04-12T16:01:23+08:00</span>    <span class="hljs-comment"># 创建时间</span><br><span class="hljs-attr">lastmod:</span> <span class="hljs-number">2022-04-12T16:01:23+08:00</span> <span class="hljs-comment"># 最后修改时间</span><br><span class="hljs-attr">draft:</span> <span class="hljs-literal">false</span>                       <span class="hljs-comment"># 是否是草稿？</span><br><span class="hljs-attr">tags:</span> [<span class="hljs-string">&quot;tag-1&quot;</span>, <span class="hljs-string">&quot;tag-2&quot;</span>, <span class="hljs-string">&quot;tag-3&quot;</span>, <span class="hljs-string">&quot;popular&quot;</span>]  <span class="hljs-comment"># 标签</span><br><span class="hljs-attr">categories:</span> [<span class="hljs-string">&quot;index&quot;</span>]              <span class="hljs-comment"># 分类</span><br><span class="hljs-attr">author:</span> <span class="hljs-string">&quot;wubh2012&quot;</span>                  <span class="hljs-comment"># 作者</span><br><br><span class="hljs-comment"># 用户自定义</span><br><span class="hljs-comment"># 你可以选择 关闭 (false) 或者 打开 (true) 以下选项</span><br><span class="hljs-attr">comment:</span> <span class="hljs-literal">false</span>   <span class="hljs-comment"># 关闭评论</span><br><span class="hljs-attr">toc:</span> <span class="hljs-literal">false</span>       <span class="hljs-comment"># 关闭文章目录</span><br><span class="hljs-attr">reward:</span> <span class="hljs-literal">false</span>	 <span class="hljs-comment"># 关闭打赏</span><br><span class="hljs-meta">---</span><br><span class="hljs-comment">## Hello World!</span><br></code></pre></td></tr></table></figure>
+
+<p>然后我们再次运行 <code>hugo serve -D</code> 命令，在浏览器中输入 <code>http://localhost:1313/hello-world.html</code> 就可以看到我们的新文章了。</p>
+<h2 id="发布到-GitHub"><a href="#发布到-GitHub" class="headerlink" title="发布到 GitHub"></a>发布到 GitHub</h2><ol>
+<li>在 Github 创建一个与你账号同名的仓库，以 wubh2012.github.io 为例子</li>
+<li>在仓库中设置启用 GitPage<br><img src="https://static.aalmix.com/20220525212029.png" srcset="/img/loading.gif" lazyload alt="20220525212029"></li>
+<li>首先使用 <code>hugo -D</code> 构建静态站点，默认会在 <code>public/</code> 目录下生成静态文件，将 public 文件夹的内容上传到仓库中<br><img src="https://static.aalmix.com/20220525212122.png" srcset="/img/loading.gif" lazyload alt="20220525212122"></li>
+<li>访问 <a href="https://wubh2012.github.io/">https://wubh2012.github.io</a></li>
+</ol>
+<p><img src="https://static.aalmix.com/20220525212203.png" srcset="/img/loading.gif" lazyload alt="20220525212203"></p>
+<p>大工告成，恭喜你现在有一个自己的博客了！如果博客有更新只要重新上传 public 文件夹即可, 后面会教大家如何使用 GitAction 自动更新部署。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%8D%9A%E5%AE%A2/">#博客</a>
+      
+        <a href="/tags/hugo/">#hugo</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>如何使用 hugo 搭建自己的博客</div>
+      <div>https://wubh2012.github.io/2022/04/12/use-hugo-build-your-blog/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>aalmix</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年4月12日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/25/hugo-blog-custom-domain/" title="使用hugo搭建博客 - 自定义域名">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">使用hugo搭建博客 - 自定义域名</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/09/docker-guide/" title="Docker 指南">
+                        <span class="hidden-mobile">Docker 指南</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
