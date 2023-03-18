@@ -2,15 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.aalmix.com/2020/11/02/%E4%BD%BF%E7%94%A8frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/</loc>
-    
-    <lastmod>2023-03-18</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.aalmix.com/2020/11/05/%E5%9C%A8windows%E4%B8%8A%E8%AE%BE%E7%BD%AEfrp%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8/</loc>
     
     <lastmod>2023-03-18</lastmod>
@@ -74,7 +65,7 @@
   </url>
   
   <url>
-    <loc>https://blog.aalmix.com/2022/04/09/docker-guide/</loc>
+    <loc>https://blog.aalmix.com/2020/11/02/%E4%BD%BF%E7%94%A8frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E6%95%99%E7%A8%8B/</loc>
     
     <lastmod>2023-03-18</lastmod>
     
@@ -156,6 +147,15 @@
   
   <url>
     <loc>https://blog.aalmix.com/2023/03/18/chatgpt-help-me-solve-a-nginx-question/</loc>
+    
+    <lastmod>2023-03-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.aalmix.com/2022/04/09/docker-guide/</loc>
     
     <lastmod>2023-03-18</lastmod>
     

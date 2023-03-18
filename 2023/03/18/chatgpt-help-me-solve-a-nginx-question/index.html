@@ -36,7 +36,7 @@
 <meta property="og:image" content="https://static.aalmix.com/202303181319176.png">
 <meta property="og:image" content="https://static.aalmix.com/202303181319596.png">
 <meta property="article:published_time" content="2023-03-18T10:23:14.000Z">
-<meta property="article:modified_time" content="2023-03-18T05:41:24.217Z">
+<meta property="article:modified_time" content="2023-03-18T12:34:00.924Z">
 <meta property="article:author" content="aalmix">
 <meta property="article:tag" content="Nginx">
 <meta property="article:tag" content="chatgpt">
@@ -327,7 +327,7 @@
 </tbody></table>
 <p>前端程序需要根据照片的文件名称把图片显示出来，最开始想到的就是通过 Nginx 进行反向代理来解决这个问题。</p>
 <p>举个例子，照片文件名称是 QC1 开头的，那么就是从 192.168.100.1 服务器上取照片，用户访问 <code>http://10.76.2.10:8029/media/QC1_20220318T131856_1_CT.jpg</code>，实际上访问的是 <code>http://192.168.100.1/media/QC1_20220318T131856_1_CT.jpg</code> 。</p>
-<p>但是由于本人对 Nginx 配置不是很熟悉，通过搜索引擎并一时半会没有找到合适的解决办法，刚好最近 ChatGPT 大红大紫，于是萌生了询问 ChatGPT 来解决这个问题的想法，于是就产生了下面我和 ChatGPT 的对话。</p>
+<p>但是由于本人对 Nginx 配置不是很熟悉，刚好最近 ChatGPT 大红大紫，于是萌生了询问 ChatGPT 来解决这个问题的想法，于是就产生了下面我和 ChatGPT 的对话。</p>
 <h2 id="使用ChatGPT解决"><a href="#使用ChatGPT解决" class="headerlink" title="使用ChatGPT解决"></a>使用ChatGPT解决</h2><p>我向 ChatGPT 说明了我要咨询关于 Nginx 反向代理的问题，并简单介绍了背景。ChatGPT 很快就理解了我的问题，并提供了如下的 Nginx 配置</p>
 <p><img src="https://static.aalmix.com/202303181318732.png" srcset="/img/loading.gif" lazyload alt="image-20230318113917729"></p>
 <p>接着 ChatGPT 就给出了 nginx 的配置</p>
@@ -348,9 +348,9 @@
 <p><img src="https://static.aalmix.com/202303181319176.png" srcset="/img/loading.gif" lazyload alt="QC1和QC2服务器上的照片"></p>
 <p>我们通过 <a target="_blank" rel="noopener" href="http://localhost:8029/">http://localhost:8029</a> （web服务器）分别去访问这两张照片，一切都运行正常，根据照片的文件名，Nginx 正确地将请求转发到了对应的服务器，照片也能够正确地显示出来，🎉🎉🎉！</p>
 <p><img src="https://static.aalmix.com/202303181319596.png" srcset="/img/loading.gif" lazyload alt="验证访问"></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>在本文中，我们探讨了如何使用 ChatGPT 来解决一个关于 Nginx 反向代理的问题。通过合理的使用 ChatGPT，我们可以大大提高工作效率，并且还能学习到新的知识点。</p>
-<p>然而，我们也需要注意到一个问题，那就是我们应该降低对 ChatGPT 的期望，将其作为工具来使用，而不是完全相信它。因为它也会出错，我们需要在使用 ChatGPT 的过程中进行反复验证和调整，以确保得到正确的答案。</p>
-<p>因此，我们需要综合考虑 ChatGPT 的优缺点，并将其与我们自己的知识和经验相结合，以获得最佳的解决方案。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>在本文中，我们不仅通过与 ChatGPT 对话来解决了 Nginx 反向代理的问题，并且还能在这个过程中学习到了使用  <code>if</code> 指令来控制请求，学习到新的知识点。</p>
+<p>然而，我们也需要注意到一个问题，一开始它并没有正确的给出正确的 Nginx 配置，需要在使用 ChatGPT 的过程中进行反复验证和调整，以确保得到正确的答案，有时可能需要与我们自己的知识和经验相结合，以获得最佳的解决方案。</p>
+<p>如果我们降低对 ChatGPT 的期望将其作为工具来使用，而不是完全相信它，ChatGPT 也是一个不错的小助手。</p>
 
                 
               </div>
