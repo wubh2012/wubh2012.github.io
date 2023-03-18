@@ -24,17 +24,20 @@
 <meta property="og:site_name" content="水果芋头">
 <meta property="og:description" content="Docker 指南本文的目的是解释与 Docker 相关的重要概念，以便能够有效的使用 Docker 开发应用程序。 什么是 Docker?Docker 是一个能够在独立的环境中运行应用程序的的工具。 它可以确保应用程序能在独立的环境下运行，应用程序能够按预期的那样在不同的机器&#x2F;服务器上运行。这样可以确保在本地开发应用程序，部署到服务器环境上也可以运行。对于开发人员来说，Docker 能">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://static.aalmix.com/202302272234900.jpeg">
+<meta property="og:image" content="https://static.aalmix.com/202303042113903.png">
+<meta property="og:image" content="https://static.aalmix.com/202302272239849.png">
 <meta property="og:image" content="https://static.aalmix.com/image-20210516164412510.png">
 <meta property="og:image" content="https://static.aalmix.com/image-20210516164445416.png">
 <meta property="og:image" content="https://static.aalmix.com/image-20210516164919632.png">
 <meta property="og:image" content="https://static.aalmix.com/image-20210516170500356.png">
 <meta property="og:image" content="https://static.aalmix.com/image-20210516172205211.png">
 <meta property="article:published_time" content="2022-04-09T02:37:09.000Z">
-<meta property="article:modified_time" content="2023-02-27T14:29:33.301Z">
+<meta property="article:modified_time" content="2023-03-18T05:25:38.181Z">
 <meta property="article:author" content="aalmix">
 <meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://static.aalmix.com/image-20210516164412510.png">
+<meta name="twitter:image" content="https://static.aalmix.com/202302272234900.jpeg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -234,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.5k 字
+          6.9k 字
         
       </span>
     
@@ -245,7 +248,7 @@
         
         
         
-          47 分钟
+          58 分钟
         
       </span>
     
@@ -305,18 +308,47 @@
 <p>Docker images(镜像)理解为一个包含了操作系统和应用的对象，Docker containers(容器)是用来运行Docker镜像中代码的环境。Docker 镜像可以保存到Docker仓库中心，供其他人下载使用。目前最流行的Docker 仓库是 Docker Hub。</p>
 <p>Docker volumes(存储卷) 用于保存容器所产生的数据，将数据保存到 Docker 存储卷中后，即使 Docker 容器被删除、重新创建、重新启动，数据也不会丢失。Docker volumen支持2个容器共享访问相同的数据，只需要将容器的的存储卷指向相同的位置就可以。</p>
 <p>Docker network(网络) 可以用来隔离容器，可以允许容器之间彼此通信。</p>
-<h2 id="那么虚拟机呢-virtual-machines？"><a href="#那么虚拟机呢-virtual-machines？" class="headerlink" title="那么虚拟机呢 virtual machines？"></a>那么虚拟机呢 virtual machines？</h2><p>经常出现虚拟机(vm)与 Docker 相关的话题，因为它们都用来创建隔离的环境。<br>使用 Docker后，应用程序将在容器的独立环境下运行，这些容器中的每一个都共享同一个电脑上的操作系统内核。另一方面，在虚拟机上运行的应用程序运行在自己的操作系统上，不共享底层内核，虚拟机在 hypervisor 帮助下运行和管理要运行的操作系统。</p>
-<p>虚拟机配图</p>
+<h2 id="那么虚拟机呢-virtual-machines？"><a href="#那么虚拟机呢-virtual-machines？" class="headerlink" title="那么虚拟机呢 virtual machines？"></a>那么虚拟机呢 virtual machines？</h2><p>经常出现虚拟机(vm)与 Docker 相关的话题，因为它们都用来创建隔离的环境。<br>使用 Docker后，应用程序将在容器的独立环境下运行，这些容器中的每一个都共享同一个电脑上的操作系统内核。另一方面，在虚拟机上运行的应用程序运行在自己的操作系统上，不共享底层内核，虚拟机需要在 hypervisor 帮助下运行和管理要运行的操作系统。</p>
+<p><img src="https://static.aalmix.com/202302272234900.jpeg" srcset="/img/loading.gif" lazyload alt="Type 1 Hypervisors"></p>
 <p>使用Docker相对于虚拟机来说有压倒性的优势，Docker容器可以在几秒钟到几分钟运行起来，而且是轻量级的（MB 相对于GB的大小），容易配置，并且只使用少量的资源。也许使用虚拟机而不是Docker的唯一原因是，由于担心 Docker 容器在主机操作系统上使用共享内核会产生安全漏洞，因此需要更高级别的隔离。</p>
-<p>配图说明Docker和VM的优缺点</p>
-<p>使用图片说明 Docker 镜像对于虚拟机来说有多小</p>
-<h2 id="Docker-engine"><a href="#Docker-engine" class="headerlink" title="Docker engine"></a>Docker engine</h2><h2 id="安装-Docker"><a href="#安装-Docker" class="headerlink" title="安装 Docker"></a>安装 Docker</h2><p>目前安装 Docker 相关依赖的最简单的方法是安装 Docker Desktop. Docker Desktop 附带了几个与 Docker 相关的工具，包括 Docker Engine、Docker CLI 和 Docker Compose。<br>对于 Mac 和 Windows 用户可以通过下面的链接进行下载安装</p>
+<p><img src="https://static.aalmix.com/202303042113903.png" srcset="/img/loading.gif" lazyload alt="image-20230304211323796"></p>
+<p>Docker 镜像对于虚拟机区别</p>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>容器</th>
+<th>虚拟机</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>启动</td>
+<td>秒级</td>
+<td>分钟级</td>
+</tr>
+<tr>
+<td>硬盘使用</td>
+<td>一般为 <code>MB</code></td>
+<td>一般为 <code>GB</code></td>
+</tr>
+<tr>
+<td>性能</td>
+<td>接近原生</td>
+<td>弱于</td>
+</tr>
+<tr>
+<td>系统支持量</td>
+<td>单机支持上千个容器</td>
+<td>一般几十个</td>
+</tr>
+</tbody></table>
+<h2 id="Docker-engine"><a href="#Docker-engine" class="headerlink" title="Docker engine"></a>Docker engine</h2><h2 id="安装-Docker"><a href="#安装-Docker" class="headerlink" title="安装 Docker"></a>安装 Docker</h2><p>目前安装 Docker 相关依赖的最简单的方法是安装 Docker Desktop。 Docker Desktop 附带了几个与 Docker 相关的工具，包括 Docker Engine、Docker CLI 和 Docker Compose。<br>对于 Mac 和 Windows 用户可以通过下面的链接进行下载安装</p>
 <ul>
 <li>Mac <a target="_blank" rel="noopener" href="https://docs.docker.com/docker-for-mac/install/">https://docs.docker.com/docker-for-mac/install/</a></li>
 <li>Windows <a target="_blank" rel="noopener" href="https://docs.docker.com/docker-for-windows/install/">https://docs.docker.com/docker-for-windows/install/</a></li>
 </ul>
 <p>安装以后，请确保 Docker Desktop 正在运行。如果 Docker Desktop 正在运行，则意味着 Docker Engine 已启动，并且本文提到的 Docker CLI 命令也能执行。</p>
-<p>配图！</p>
+<p><img src="https://static.aalmix.com/202302272239849.png" srcset="/img/loading.gif" lazyload alt="Docker Desktop is running indicator"></p>
 <p>对于 Linux 用户来说并没有 Docker Desktop软件，所以每个组件必须单独安装</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/">Docker Engine + CLI </a></li>
@@ -326,12 +358,64 @@
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sh">sudo systemctl start docker<br></code></pre></td></tr></table></figure>
 
 <p>上面的命令应该可以正常运行，因为 <code>systemctl</code> 已经在大多数 Linux 发行版中集成了，如果无法运行那么请使用 <code>sudo service docker start</code> 命令。这是另一种可以在 Linux 开机时自动启动 Docker。</p>
-<h2 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h2><p><code>DockerFile</code> 是一个如何构建镜像的说明文件。这个文件通常首先会指定一个基础的Docker镜像，例如，如何需要构建一个机遇 python 的API ，那么就可以使用一个安装了 python 环境的Linux操作系统作为Docker基础镜像，指定这个基础镜像之后使用其他指令来构建Docker镜像。</p>
+<h2 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h2><p><code>DockerFile</code> 是一个如何构建镜像的说明文件。这个文件通常首先会指定一个基础的 Docker 镜像，例如，如何需要构建一个基于 python 开发的 API 程序 ，那么就可以使用一个安装了 python 环境的 Linux 操作系统作为 Docker 基础镜像，指定这个基础镜像之后使用其他指令来构建 Docker 镜像。</p>
 <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs dockerfile"><span class="hljs-comment"># 使用安装了Node12.16.1版本的Linux操作系统作为基础镜像</span><br><span class="hljs-keyword">FROM</span> node:<span class="hljs-number">12.16</span>.<span class="hljs-number">1</span>-alpine3.<span class="hljs-number">11</span><br><br><span class="hljs-comment"># Installs some dependencies required for the Node.js API</span><br><span class="hljs-comment"># 安装 Node.js 依赖</span><br><span class="hljs-keyword">RUN</span><span class="language-bash"> apk add --no-cache make g++</span><br><br><span class="hljs-comment"># Indicates that the API exposes port 3000</span><br><span class="hljs-comment"># 对外暴露 3000 端口</span><br><span class="hljs-keyword">EXPOSE</span> <span class="hljs-number">3000</span><br><br><span class="hljs-comment"># Specifies the working directory. All the paths referenced after this point will be relative to this directory.</span><br><span class="hljs-comment"># 指定工作目录</span><br><span class="hljs-keyword">WORKDIR</span><span class="language-bash"> /usr/src/app</span><br><br><span class="hljs-comment"># Copy all local source files into the Docker container&#x27;s working directory</span><br><span class="hljs-comment"># 将本地文件复制到镜像的工作目录当中</span><br><span class="hljs-keyword">COPY</span><span class="language-bash"> . .</span><br><br><span class="hljs-comment"># Installs NPM dependencies using yarn</span><br><span class="hljs-comment"># 使用 yarn 安装项目依赖</span><br><span class="hljs-keyword">RUN</span><span class="language-bash"> yarn install</span><br><br><span class="hljs-comment"># Command to start the API which will get executed when a Docker container using this image is started.</span><br><span class="hljs-comment"># 当容器运行的时候将会执行 yarn start 命令</span><br><span class="hljs-keyword">CMD</span><span class="language-bash"> [ <span class="hljs-string">&quot;yarn&quot;</span>, <span class="hljs-string">&quot;start&quot;</span> ]</span><br></code></pre></td></tr></table></figure>
 
 <p>下面列出了常用的指令说明，完整的列表请查看 <a target="_blank" rel="noopener" href="https://docs.docker.com/engine/reference/builder/">Docker 官方文档</a></p>
+<table>
+<thead>
+<tr>
+<th align="left">Instruction</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/reference/builder/#from"><code>FROM</code></a></td>
+<td align="left">Defines a base image 定义一个基础的镜像</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/reference/builder/#run"><code>RUN</code></a></td>
+<td align="left">Executes command in a new image layer 在镜像上执行命令</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/reference/builder/#cmd"><code>CMD</code></a></td>
+<td align="left">Command to be executed when running a container 容器运行时执行的命令</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/reference/builder/#expose"><code>EXPOSE</code></a></td>
+<td align="left">Documents which ports are exposed (not used for anything other than documentation) 容器对外暴露的端口</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/reference/builder/#env"><code>ENV</code></a></td>
+<td align="left">Sets environment variables 设置环境变量</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/reference/builder/#copy"><code>COPY</code></a></td>
+<td align="left">Copies files&#x2F;directories into the image 把文件复制到镜像中</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/reference/builder/#add"><code>ADD</code></a></td>
+<td align="left">A more feature-rich version of the <code>COPY</code> instruction. <a target="_blank" rel="noopener" href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#add-or-copy"><code>COPY</code> is preferred</a> over <code>ADD</code>. 功能更强大的COPY指令，但是COPY指令优于ADD</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/reference/builder/#entrypoint"><code>ENTRYPOINT</code></a></td>
+<td align="left">Define a container’s executable. See the difference between the <code>CMD</code> instruction <a target="_blank" rel="noopener" href="https://phoenixnap.com/kb/docker-cmd-vs-entrypoint">here</a>. 入口点</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/reference/builder/#volume"><code>VOLUME</code></a></td>
+<td align="left">Defines which directory in an image should be treated as a volume. The volume will be given a random name which can be found using <code>docker inspect</code> command.定义镜像中应该被视为卷的目录。该卷将被赋予一个随机名称，可以使用 <code>docker inspect</code> 命令找到它。</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/reference/builder/#workdir"><code>WORKDIR</code></a></td>
+<td align="left">Defines the working directory for subsequent instructions in the <code>Dockerfile</code> 指定工作目录</td>
+</tr>
+<tr>
+<td align="left"><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/reference/builder/#arg"><code>ARG</code></a></td>
+<td align="left">Defines variables that can be passed by the <code>docker build --build-arg</code> command and used within the <code>Dockerfile</code>.定义可以通过<code>docker build --build-arg</code>命令传递并在Dockerfile中使用的变量。</td>
+</tr>
+</tbody></table>
 <p>如果有一些文件不需要复制到 Docker 镜像当中，那么可是在 Dockerfile 同级目录下面添加一个 <code>.dockerignore</code>文件，这样使用 <code>COPY</code>或 <code>ADD</code>指令的时候将不会把<code>.dockerignore</code>中指定文件复制到Docker镜像当中。更多关于<code>.dockerignore</code> 语法问题请参考这个<a target="_blank" rel="noopener" href="https://docs.docker.com/engine/reference/builder/#dockerignore-file">链接</a>。</p>
-<h2 id="Docker-image"><a href="#Docker-image" class="headerlink" title="Docker image"></a>Docker image</h2><p>镜像由多个层组成，每层叠加之后，从外部看就如同一个独立的对象。镜像内部是一个精简的操作系统，同时还包含应用运行所必须的文件和依赖包。因为容器的设计初衷就是快速和小巧，所以镜像通常比较小。</p>
+<h2 id="Docker-images"><a href="#Docker-images" class="headerlink" title="Docker images"></a>Docker images</h2><p>Docker镜像由多个层组成（类似于洋葱），每层叠加之后，从外部看就如同一个独立的对象。镜像内部是一个精简的操作系统，同时还包含应用运行所必须的文件和依赖包。因为容器的设计初衷就是快速和小巧，所以镜像通常比较小。</p>
 <h3 id="构建镜像和给镜像打标签"><a href="#构建镜像和给镜像打标签" class="headerlink" title="构建镜像和给镜像打标签"></a>构建镜像和给镜像打标签</h3><p>使用 <code>docker build </code>命令来创建镜像，当构建镜像时会提供一个 <code>--tag</code>选项给镜像打标签，这样就知道从镜像仓库中使用哪个镜像，或者在运行容器时使用哪个镜像了。 </p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">docker</span> build --tag my-app:<span class="hljs-number">1</span>.<span class="hljs-number">0</span> . <br><span class="hljs-comment"># --tag 可以简写成 -t</span><br><span class="hljs-attribute">docker</span> build -t my-app:<span class="hljs-number">1</span>.<span class="hljs-number">0</span> .<br></code></pre></td></tr></table></figure>
 <p><img src="https://static.aalmix.com/image-20210516164412510.png" srcset="/img/loading.gif" lazyload alt="image-20210516164412510"></p>
@@ -355,10 +439,8 @@
 <p>这个时候就不要通过镜像的摘要进行获取镜像了</p>
 <p>docker image pull nginx@sha256:c3dcdb92d7432d56604d….</p>
 </blockquote>
-<h3 id="列出镜像"><a href="#列出镜像" class="headerlink" title="列出镜像"></a>列出镜像</h3><p>使用<code>docker images</code> 或 <code>docker images ls</code> 命令可以列出当前本地可用的Docker 镜像</p>
+<h3 id="查看镜像"><a href="#查看镜像" class="headerlink" title="查看镜像"></a>查看镜像</h3><p>使用<code>docker images</code> 或 <code>docker images ls</code> 命令可以列出当前本地可用的Docker 镜像</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker images<br>docker images <span class="hljs-built_in">ls</span><br></code></pre></td></tr></table></figure>
-
-
 
 <h3 id="拉取和推送镜像"><a href="#拉取和推送镜像" class="headerlink" title="拉取和推送镜像"></a>拉取和推送镜像</h3><p>Docker 镜像可以保存在Docker镜像注册中心，默认的中心是 Docker Hub 。从Docker Hub拉取镜像使用<code>docker pull</code>命令：</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">docker</span> pull nginx:<span class="hljs-number">1</span>.<span class="hljs-number">18</span>.<span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
@@ -384,25 +466,40 @@
 
 
 
-<h2 id="Docker-container"><a href="#Docker-container" class="headerlink" title="Docker container"></a>Docker container</h2><p>容器是镜像的运行时实例。</p>
+<h2 id="Docker-container"><a href="#Docker-container" class="headerlink" title="Docker container"></a>Docker container</h2><p>我们可以把容器看做是镜像的运行时实例。</p>
 <h3 id="运行容器"><a href="#运行容器" class="headerlink" title="运行容器"></a>运行容器</h3><p>通过 <code>docker run </code> 命令启动容器</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">docker</span> run my-app:<span class="hljs-number">1</span>.<span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run my-app:1.0<br></code></pre></td></tr></table></figure>
 
 <p>上面的命令将会使用 my-app 1.0 的镜像创建容器，执行 <code>docker run </code>命令后将会启动容器，还会执行在 Dockerfile 中指定的 CMD 命令。使用 <code>docker ps </code>命令可以列出当前所有正在运行的容器。</p>
-<p>容器创建成功会Docker会随机生成一个 ContainerID 和 Container Name给容器，我们也可以通过添加 <code>--name </code>参数给容器取个好记的名字</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stata">docker <span class="hljs-keyword">run</span> --name my-<span class="hljs-keyword">app</span> my-<span class="hljs-keyword">app</span>:1.0<br></code></pre></td></tr></table></figure>
+<p>容器创建成功后，Docker会随机生成一个 ContainerID 和 Container Name给容器，我们也可以通过添加 <code>--name </code>参数给容器取个好记的名字</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run --name my-app my-app:1.0<br></code></pre></td></tr></table></figure>
 
 <p>通过上面的命令将运行一个叫<code>my-app</code>名字的容器</p>
-<h3 id="查看容器日志"><a href="#查看容器日志" class="headerlink" title="查看容器日志"></a>查看容器日志</h3><p>默认情况下使用<code>docker run</code> 命令运行容器时会将容器中进程的执行日志实时的输出到当前启动的控制台，然而我们可以通过使用 <code>-d</code> 参数在分离模式下运行容器，这样就可以继续在控制台中执行命令</p>
+<h3 id="查看容器日志"><a href="#查看容器日志" class="headerlink" title="查看容器日志"></a>查看容器日志</h3><p>默认情况下使用<code>docker run</code> 命令运行容器时会将容器中进程的执行日志实时的输出到当前启动的控制台，然而我们可以通过使用 <code>-d</code> 参数在让容器在后台下运行容器，这样就可以继续在控制台中执行命令</p>
 <p>[配图说明区别]</p>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">docker</span> run -d my-app:<span class="hljs-number">1</span>.<span class="hljs-number">0</span> <br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run -d my-app:1.0 <br></code></pre></td></tr></table></figure>
 
-<p>如果使用分离模式运行容器，那么我们可以使用<code>docker logs</code>命令查下容器的日志</p>
+<p>如果使用 <code>-d</code>参数在后台运行容器，那么我们可以使用<code>docker logs</code>命令查下容器的日志</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 通过容器ID查看</span><br>docker logs 容器ID<br><span class="hljs-comment"># 通过容器名称查看</span><br>docker logs my-app <br></code></pre></td></tr></table></figure>
 
-<h3 id="暴露端口"><a href="#暴露端口" class="headerlink" title="暴露端口"></a>暴露端口</h3><p>Dockerfile 和 save 打包镜像的区别</p>
-<p>Dockerfile 可以查看详细的历史，</p>
-<p>save 的方式就无法查看打包的历史了，不知道给镜像做了什么事情</p>
+<h3 id="暴露端口"><a href="#暴露端口" class="headerlink" title="暴露端口"></a>暴露端口</h3><p>如果容器自身提供一个端口（例如3000），但是在局域网中访问 <code>http://localhost:3000</code>是访问不到的，还需要使用下面命令将容器的3000端口映射给 Docker主机的 4000 端口，这个时候在局域网就能正常访问 <code>http://localhost:4000</code> 了。</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">docker</span> run -p <span class="hljs-number">4000</span>:<span class="hljs-number">3000</span> my-app:<span class="hljs-number">1</span>.<span class="hljs-number">0</span><br><span class="hljs-comment"># 4000 属于主机端口，3000 属于容器自身端口</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="停止和删除容器"><a href="#停止和删除容器" class="headerlink" title="停止和删除容器"></a>停止和删除容器</h3><h3 id="查看容器"><a href="#查看容器" class="headerlink" title="查看容器"></a>查看容器</h3><h3 id="在容器中执行命令"><a href="#在容器中执行命令" class="headerlink" title="在容器中执行命令"></a>在容器中执行命令</h3><p>要在正在运行的容器中运行命令，请使用 <code>docker exec</code>命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker <span class="hljs-built_in">exec</span> my-app <span class="hljs-built_in">ls</span><br></code></pre></td></tr></table></figure>
+
+<p>如果想进入容器里面执行命令，需要使用一下命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker <span class="hljs-built_in">exec</span> -it my-app bash<br></code></pre></td></tr></table></figure>
+
+<h3 id="查看容器详情"><a href="#查看容器详情" class="headerlink" title="查看容器详情"></a>查看容器详情</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker inspect my-app<br></code></pre></td></tr></table></figure>
+
+<h2 id="Docker-Volumes"><a href="#Docker-Volumes" class="headerlink" title="Docker Volumes"></a>Docker Volumes</h2><h2 id="Docker-networks"><a href="#Docker-networks" class="headerlink" title="Docker networks"></a>Docker networks</h2><h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="使用-Dockerfile-和-save-打包镜像的区别"><a href="#使用-Dockerfile-和-save-打包镜像的区别" class="headerlink" title="使用 Dockerfile 和 save 打包镜像的区别"></a>使用 Dockerfile 和 save 打包镜像的区别</h3><ul>
+<li><p>Dockerfile 可以查看详细的历史</p>
+</li>
+<li><p>使用 docker save 的方式就无法查看打包的历史了，外人不知道作者给镜像做了什么具体的操作</p>
+</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://robertcooper.me/post/docker-guide#removing-images">Docker guide (robertcooper.me)</a></p>
 
                 
               </div>

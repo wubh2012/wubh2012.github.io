@@ -17,27 +17,37 @@
   <meta name="author" content="aalmix">
   <meta name="keywords" content="">
   
-    <meta name="description" content="需求现在有2个域名，网站部署都同一个公网IP服务器上面，其中站点A已经占用了公网IP的 80 端口，现在想实现两个域名都能通过80端口访问，域名B 访问时不需要添加端口号 12www.siteA.com &#x3D;&gt; 111.111.111.111:80www.siteB.com &#x3D;&gt; 111.111.111.111:9091    之前的做法域名A的解析保持不变，域名B 在DNS解析中添加一">
+    <meta name="description" content="背景我有 3 台服务器，1台Web服务器对外提供访问，另外两台服务器 QC1 和 QC2 用于存储不同设备识别后保存的照片。它们的 IP 地址如下：    服务器名称 IP地址    Web服务器 10.36.2.10   QC1 192.168.100.1   QC2 192.168.100.2   前端程序需要根据照片的文件名称把图片显示出来，最开始想到的就是通过 Nginx 进行反向代理来解">
 <meta property="og:type" content="article">
-<meta property="og:title" content="让 nginx 支持多域名站点">
-<meta property="og:url" content="https://blog.aalmix.com/2021/05/19/nginx-support-many-domain/index.html">
+<meta property="og:title" content="使用 ChatGPT 帮我解决了一个 Nginx 反向代理的问题">
+<meta property="og:url" content="https://blog.aalmix.com/2023/03/18/chatgpt-help-me-solve-a-nginx-question/index.html">
 <meta property="og:site_name" content="水果芋头">
-<meta property="og:description" content="需求现在有2个域名，网站部署都同一个公网IP服务器上面，其中站点A已经占用了公网IP的 80 端口，现在想实现两个域名都能通过80端口访问，域名B 访问时不需要添加端口号 12www.siteA.com &#x3D;&gt; 111.111.111.111:80www.siteB.com &#x3D;&gt; 111.111.111.111:9091    之前的做法域名A的解析保持不变，域名B 在DNS解析中添加一">
+<meta property="og:description" content="背景我有 3 台服务器，1台Web服务器对外提供访问，另外两台服务器 QC1 和 QC2 用于存储不同设备识别后保存的照片。它们的 IP 地址如下：    服务器名称 IP地址    Web服务器 10.36.2.10   QC1 192.168.100.1   QC2 192.168.100.2   前端程序需要根据照片的文件名称把图片显示出来，最开始想到的就是通过 Nginx 进行反向代理来解">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://static.aalmix.com/20210519194401.png">
-<meta property="og:image" content="https://static.aalmix.com/20210519194405.png">
-<meta property="article:published_time" content="2021-05-19T18:45:30.000Z">
-<meta property="article:modified_time" content="2023-03-18T05:25:38.185Z">
+<meta property="og:image" content="https://static.aalmix.com/202303181318732.png">
+<meta property="og:image" content="https://static.aalmix.com/202303181318673.png">
+<meta property="og:image" content="https://static.aalmix.com/202303181318441.png">
+<meta property="og:image" content="https://static.aalmix.com/202303181318954.png">
+<meta property="og:image" content="https://static.aalmix.com/202303181318368.png">
+<meta property="og:image" content="https://static.aalmix.com/202303181318796.png">
+<meta property="og:image" content="https://static.aalmix.com/202303181318297.png">
+<meta property="og:image" content="https://static.aalmix.com/202303181318352.png">
+<meta property="og:image" content="https://static.aalmix.com/202303181318515.png">
+<meta property="og:image" content="https://static.aalmix.com/202303181319176.png">
+<meta property="og:image" content="https://static.aalmix.com/202303181319596.png">
+<meta property="article:published_time" content="2023-03-18T10:23:14.000Z">
+<meta property="article:modified_time" content="2023-03-18T05:25:38.177Z">
 <meta property="article:author" content="aalmix">
-<meta property="article:tag" content="nginx">
+<meta property="article:tag" content="Nginx">
+<meta property="article:tag" content="chatgpt">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://static.aalmix.com/20210519194401.png">
+<meta name="twitter:image" content="https://static.aalmix.com/202303181318732.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>让 nginx 支持多域名站点 - 水果芋头</title>
+  <title>使用 ChatGPT 帮我解决了一个 Nginx 反向代理的问题 - 水果芋头</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -208,7 +218,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="让 nginx 支持多域名站点"></span>
+            <span id="subtitle" data-typed-text="使用 ChatGPT 帮我解决了一个 Nginx 反向代理的问题"></span>
           
         </div>
 
@@ -219,8 +229,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2021-05-19 18:45" pubdate>
-          2021年5月19日 晚上
+        <time datetime="2023-03-18 10:23" pubdate>
+          2023年3月18日 上午
         </time>
       </span>
     
@@ -231,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.4k 字
+          1.1k 字
         
       </span>
     
@@ -242,7 +252,7 @@
         
         
         
-          12 分钟
+          10 分钟
         
       </span>
     
@@ -289,24 +299,58 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">让 nginx 支持多域名站点</h1>
+            <h1 style="display: none">使用 ChatGPT 帮我解决了一个 Nginx 反向代理的问题</h1>
             
             
               <div class="markdown-body">
                 
-                <h4 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h4><p>现在有2个域名，网站部署都同一个公网IP服务器上面，其中站点A已经占用了公网IP的 80 端口，现在想实现两个域名都能通过80端口访问，域名B 访问时不需要添加端口号</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">www.siteA.com</span> =&gt; <span class="hljs-number">111.111</span>.<span class="hljs-number">111.111</span>:<span class="hljs-number">80</span><br><span class="hljs-attr">www.siteB.com</span> =&gt; <span class="hljs-number">111.111</span>.<span class="hljs-number">111.111</span>:<span class="hljs-number">9091</span><br></code></pre></td></tr></table></figure>
-
-
-
-<h4 id="之前的做法"><a href="#之前的做法" class="headerlink" title="之前的做法"></a>之前的做法</h4><p>域名A的解析保持不变，域名B 在DNS解析中添加一个隐性URL记录。</p>
-<p><img src="https://static.aalmix.com/20210519194401.png" srcset="/img/loading.gif" lazyload alt="image-20210519193856059"></p>
-<p>当我们访问域名B的时候，浏览器返回的一串下图所示的HTML代码，本质上还是嵌套一个 frame 。</p>
-<p><img src="https://static.aalmix.com/20210519194405.png" srcset="/img/loading.gif" lazyload alt="image-20210519192104079"></p>
-<p>但是这样无法正常显示域名B的标题，本来想通过 JS 代码去修改，奈何由于浏览器跨域的安全性问题导致无法修改，只要作罢。</p>
-<h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><p>后来还是通过 nginx 解决，在 nginx.conf 中配置两个 server，同时监听 80 端口，当使用浏览器访问不同的域名时，通过 nginx 代理转发到实际程序的端口上。</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><br><span class="hljs-comment">#user  nobody;</span><br><span class="hljs-attribute">worker_processes</span>  <span class="hljs-number">1</span>;<br><br><span class="hljs-comment">#error_log  logs/error.log;</span><br><span class="hljs-comment">#error_log  logs/error.log  notice;</span><br><span class="hljs-comment">#error_log  logs/error.log  info;</span><br><br><span class="hljs-comment">#pid        logs/nginx.pid;</span><br><br><br><span class="hljs-section">events</span> &#123;<br>    <span class="hljs-attribute">worker_connections</span>  <span class="hljs-number">1024</span>;<br>&#125;<br><br><br><span class="hljs-section">http</span> &#123;<br>    <span class="hljs-attribute">client_max_body_size</span> <span class="hljs-number">100M</span>;<br>    <span class="hljs-attribute">include</span>       mime.types;<br>    <span class="hljs-attribute">default_type</span>  application/octet-stream;<br><br>    <span class="hljs-comment">#log_format  main  &#x27;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#x27;</span><br>    <span class="hljs-comment">#                  &#x27;$status $body_bytes_sent &quot;$http_referer&quot; &#x27;</span><br>    <span class="hljs-comment">#                  &#x27;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#x27;;</span><br><br>    <span class="hljs-comment">#access_log  logs/access.log  main;</span><br><br>    <span class="hljs-attribute">sendfile</span>        <span class="hljs-literal">on</span>;<br>    <span class="hljs-comment">#tcp_nopush     on;</span><br><br>    <span class="hljs-comment">#keepalive_timeout  0;</span><br>    <span class="hljs-attribute">keepalive_timeout</span>  <span class="hljs-number">65</span>;<br><br>    <span class="hljs-comment">#gzip  on;</span><br><br>    <span class="hljs-section">server</span> &#123;<br>        <span class="hljs-attribute">listen</span>       <span class="hljs-number">80</span>;<br>        <span class="hljs-attribute">server_name</span>  www.siteA.com;  <span class="hljs-comment"># 站点A</span><br>        <span class="hljs-attribute">charset</span> UTF-<span class="hljs-number">8</span>;<br>        <span class="hljs-section">location</span> / &#123;            <br>            <span class="hljs-attribute">proxy_pass</span> http://localhost:9090;<br>        &#125;<br>    &#125;<br>	<br>	<br>	<span class="hljs-section">server</span> &#123;<br>        <span class="hljs-attribute">listen</span>       <span class="hljs-number">80</span>;<br>        <span class="hljs-attribute">server_name</span>  www.siteB.com; <span class="hljs-comment"># 站点B</span><br>        <span class="hljs-attribute">charset</span> UTF-<span class="hljs-number">8</span>;<br>        <span class="hljs-section">location</span> / &#123;            <br>            <span class="hljs-attribute">proxy_pass</span> http://localhost:9091;<br>        &#125;<br>		<span class="hljs-attribute">error_page</span> <span class="hljs-number">404</span>  /<span class="hljs-number">404</span>.html; <br>    &#125;<br><br>&#125;<br><br></code></pre></td></tr></table></figure>
-
+                <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>我有 3 台服务器，1台Web服务器对外提供访问，另外两台服务器 QC1 和 QC2 用于存储不同设备识别后保存的照片。它们的 IP 地址如下：</p>
+<table>
+<thead>
+<tr>
+<th>服务器名称</th>
+<th>IP地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Web服务器</td>
+<td>10.36.2.10</td>
+</tr>
+<tr>
+<td>QC1</td>
+<td>192.168.100.1</td>
+</tr>
+<tr>
+<td>QC2</td>
+<td>192.168.100.2</td>
+</tr>
+</tbody></table>
+<p>前端程序需要根据照片的文件名称把图片显示出来，最开始想到的就是通过 Nginx 进行反向代理来解决这个问题。</p>
+<p>举个例子，照片文件名称是 QC1 开头的，那么就是从 192.168.100.1 服务器上取照片，用户访问 <code>http://10.36.3.10:8029/media/QC1_20220318T131856_1_CT.jpg</code>，实际上访问的是 <code>http://192.168.101.100/media/QC1_20220318T131856_1_CT.jpg</code> 。</p>
+<p>但是由于本人对 Nginx 配置不是很熟悉，通过搜索引擎并一时半会没有找到合适的解决办法，刚好最近 ChatGPT 大红大紫，于是萌生了询问 ChatGPT 来解决这个问题的想法，于是就产生了下面我和 ChatGPT 的对话。</p>
+<h2 id="使用ChatGPT解决"><a href="#使用ChatGPT解决" class="headerlink" title="使用ChatGPT解决"></a>使用ChatGPT解决</h2><p>我向 ChatGPT 说明了我要咨询关于 Nginx 反向代理的问题，并简单介绍了背景。ChatGPT 很快就理解了我的问题，并提供了如下的 Nginx 配置</p>
+<p><img src="https://static.aalmix.com/202303181318732.png" srcset="/img/loading.gif" lazyload alt="image-20230318113917729"></p>
+<p>接着 ChatGPT 就给出了 nginx 的配置</p>
+<p><img src="https://static.aalmix.com/202303181318673.png" srcset="/img/loading.gif" lazyload alt="image-20230318114659020"></p>
+<p><img src="https://static.aalmix.com/202303181318441.png" srcset="/img/loading.gif" lazyload alt="image-20230318114716184"></p>
+<p><img src="https://static.aalmix.com/202303181318954.png" srcset="/img/loading.gif" lazyload alt="image-20230318114726801"></p>
+<p>如果访问的地址变了，它又会重新修改配置。</p>
+<p><img src="https://static.aalmix.com/202303181318368.png" srcset="/img/loading.gif" lazyload alt="image-20230318114830619"></p>
+<p>我对它写的 if 语句不清楚是用来做什么的，它也能给出相应的解释。</p>
+<p><img src="https://static.aalmix.com/202303181318796.png" srcset="/img/loading.gif" lazyload alt="image-20230318115111472"></p>
+<p>这个时候我大概明白了，只要我们拿到 $1 变量，就可以实现根据照片的文件名来反向代理服务器的请求。但是之前它提供的 upstream 配置中并没有QC1和QC2对应的地址，还是继续让 ChatGPT 修改。</p>
+<p><img src="https://static.aalmix.com/202303181318297.png" srcset="/img/loading.gif" lazyload alt="image-20230318121144872"></p>
+<p><img src="https://static.aalmix.com/202303181318352.png" srcset="/img/loading.gif" lazyload alt="image-20230318121725378"></p>
+<p>调整好后，让 ChatGPT 重新生成一个完整的 nginx 配置。</p>
+<p><img src="https://static.aalmix.com/202303181318515.png" srcset="/img/loading.gif" lazyload alt="image-20230318122050247"></p>
+<p>好了，我们把这个配置复制到服务器上，再稍微修改调整一些，重新启动了 Nginx，并使用浏览器测试了一下。</p>
+<p>下面是QC1和QC2服务器上面的两张照片</p>
+<p><img src="https://static.aalmix.com/202303181319176.png" srcset="/img/loading.gif" lazyload alt="QC1和QC2服务器上的照片"></p>
+<p>我们通过 <a target="_blank" rel="noopener" href="http://localhost:8029/">http://localhost:8029</a> （web服务器）分别去访问这两张照片，一切都运行正常，根据照片的文件名，Nginx 正确地将请求转发到了对应的服务器，照片也能够正确地显示出来，🎉🎉🎉！</p>
+<p><img src="https://static.aalmix.com/202303181319596.png" srcset="/img/loading.gif" lazyload alt="验证访问"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>在本文中，我们探讨了如何使用 ChatGPT 来解决一个关于 Nginx 反向代理的问题。通过合理的使用 ChatGPT，我们可以大大提高工作效率，并且还能学习到新的知识点。</p>
+<p>然而，我们也需要注意到一个问题，那就是我们应该降低对 ChatGPT 的期望，将其作为工具来使用，而不是完全相信它。因为它也会出错，我们需要在使用 ChatGPT 的过程中进行反复验证和调整，以确保得到正确的答案。</p>
+<p>因此，我们需要综合考虑 ChatGPT 的优缺点，并将其与我们自己的知识和经验相结合，以获得最佳的解决方案。</p>
 
                 
               </div>
@@ -319,7 +363,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/nginx/">#nginx</a>
+        <a href="/tags/Nginx/">#Nginx</a>
+      
+        <a href="/tags/chatgpt/">#chatgpt</a>
       
     </div>
   
@@ -331,8 +377,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>让 nginx 支持多域名站点</div>
-      <div>https://blog.aalmix.com/2021/05/19/nginx-support-many-domain/</div>
+      <div>使用 ChatGPT 帮我解决了一个 Nginx 反向代理的问题</div>
+      <div>https://blog.aalmix.com/2023/03/18/chatgpt-help-me-solve-a-nginx-question/</div>
     </div>
     <div class="license-meta">
       
@@ -344,7 +390,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2021年5月19日</div>
+          <div>2023年3月18日</div>
         </div>
       
       
@@ -376,18 +422,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/04/09/docker-guide/" title="Docker 指南">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Docker 指南</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/05/19/nginx-413-request-entity-too-large/" title="nginx_413_request_entity_too_large">
-                        <span class="hidden-mobile">nginx_413_request_entity_too_large</span>
+                      <a href="/2022/07/30/make-a-beautiful-windows-terminal/" title="美化 Windows Terminal">
+                        <span class="hidden-mobile">美化 Windows Terminal</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
