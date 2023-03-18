@@ -27,22 +27,29 @@ Docker network(网络) 可以用来隔离容器，可以允许容器之间彼此
 ## 那么虚拟机呢 virtual machines？
 
 经常出现虚拟机(vm)与 Docker 相关的话题，因为它们都用来创建隔离的环境。
-使用 Docker后，应用程序将在容器的独立环境下运行，这些容器中的每一个都共享同一个电脑上的操作系统内核。另一方面，在虚拟机上运行的应用程序运行在自己的操作系统上，不共享底层内核，虚拟机在 hypervisor 帮助下运行和管理要运行的操作系统。
+使用 Docker后，应用程序将在容器的独立环境下运行，这些容器中的每一个都共享同一个电脑上的操作系统内核。另一方面，在虚拟机上运行的应用程序运行在自己的操作系统上，不共享底层内核，虚拟机需要在 hypervisor 帮助下运行和管理要运行的操作系统。
 
-虚拟机配图
-
-
+![Type 1 Hypervisors](https://static.aalmix.com/202302272234900.jpeg)
 
 使用Docker相对于虚拟机来说有压倒性的优势，Docker容器可以在几秒钟到几分钟运行起来，而且是轻量级的（MB 相对于GB的大小），容易配置，并且只使用少量的资源。也许使用虚拟机而不是Docker的唯一原因是，由于担心 Docker 容器在主机操作系统上使用共享内核会产生安全漏洞，因此需要更高级别的隔离。
 
-配图说明Docker和VM的优缺点
 
-使用图片说明 Docker 镜像对于虚拟机来说有多小
+
+![image-20230304211323796](https://static.aalmix.com/202303042113903.png)
+
+Docker 镜像对于虚拟机区别
+
+| 特性       | 容器               | 虚拟机      |
+| ---------- | ------------------ | ----------- |
+| 启动       | 秒级               | 分钟级      |
+| 硬盘使用   | 一般为 `MB`        | 一般为 `GB` |
+| 性能       | 接近原生           | 弱于        |
+| 系统支持量 | 单机支持上千个容器 | 一般几十个  |
 
 ## Docker engine
 
 ## 安装 Docker
-目前安装 Docker 相关依赖的最简单的方法是安装 Docker Desktop. Docker Desktop 附带了几个与 Docker 相关的工具，包括 Docker Engine、Docker CLI 和 Docker Compose。
+目前安装 Docker 相关依赖的最简单的方法是安装 Docker Desktop。 Docker Desktop 附带了几个与 Docker 相关的工具，包括 Docker Engine、Docker CLI 和 Docker Compose。
 对于 Mac 和 Windows 用户可以通过下面的链接进行下载安装
 
 * Mac https://docs.docker.com/docker-for-mac/install/
@@ -50,7 +57,7 @@ Docker network(网络) 可以用来隔离容器，可以允许容器之间彼此
 
 安装以后，请确保 Docker Desktop 正在运行。如果 Docker Desktop 正在运行，则意味着 Docker Engine 已启动，并且本文提到的 Docker CLI 命令也能执行。
 
-配图！
+![Docker Desktop is running indicator](https://static.aalmix.com/202302272239849.png)
 
 对于 Linux 用户来说并没有 Docker Desktop软件，所以每个组件必须单独安装
 
@@ -67,7 +74,7 @@ sudo systemctl start docker
 
 ## Dockerfile
 
-`DockerFile` 是一个如何构建镜像的说明文件。这个文件通常首先会指定一个基础的Docker镜像，例如，如何需要构建一个机遇 python 的API ，那么就可以使用一个安装了 python 环境的Linux操作系统作为Docker基础镜像，指定这个基础镜像之后使用其他指令来构建Docker镜像。
+`DockerFile` 是一个如何构建镜像的说明文件。这个文件通常首先会指定一个基础的 Docker 镜像，例如，如何需要构建一个基于 python 开发的 API 程序 ，那么就可以使用一个安装了 python 环境的 Linux 操作系统作为 Docker 基础镜像，指定这个基础镜像之后使用其他指令来构建 Docker 镜像。
 
 ```
 # 使用安装了Node12.16.1版本的Linux操作系统作为基础镜像
@@ -100,12 +107,26 @@ CMD [ "yarn", "start" ]
 
 下面列出了常用的指令说明，完整的列表请查看 [Docker 官方文档](https://docs.docker.com/engine/reference/builder/)
 
+| Instruction                                                  | Description                                                  |
+| :----------------------------------------------------------- | :----------------------------------------------------------- |
+| [`FROM`](https://docs.docker.com/engine/reference/builder/#from) | Defines a base image 定义一个基础的镜像                      |
+| [`RUN`](https://docs.docker.com/engine/reference/builder/#run) | Executes command in a new image layer 在镜像上执行命令       |
+| [`CMD`](https://docs.docker.com/engine/reference/builder/#cmd) | Command to be executed when running a container 容器运行时执行的命令 |
+| [`EXPOSE`](https://docs.docker.com/engine/reference/builder/#expose) | Documents which ports are exposed (not used for anything other than documentation) 容器对外暴露的端口 |
+| [`ENV`](https://docs.docker.com/engine/reference/builder/#env) | Sets environment variables 设置环境变量                      |
+| [`COPY`](https://docs.docker.com/engine/reference/builder/#copy) | Copies files/directories into the image 把文件复制到镜像中   |
+| [`ADD`](https://docs.docker.com/engine/reference/builder/#add) | A more feature-rich version of the `COPY` instruction. [`COPY` is preferred](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#add-or-copy) over `ADD`. 功能更强大的COPY指令，但是COPY指令优于ADD |
+| [`ENTRYPOINT`](https://docs.docker.com/engine/reference/builder/#entrypoint) | Define a container's executable. See the difference between the `CMD` instruction [here](https://phoenixnap.com/kb/docker-cmd-vs-entrypoint). 入口点 |
+| [`VOLUME`](https://docs.docker.com/engine/reference/builder/#volume) | Defines which directory in an image should be treated as a volume. The volume will be given a random name which can be found using `docker inspect` command.定义镜像中应该被视为卷的目录。该卷将被赋予一个随机名称，可以使用 `docker inspect` 命令找到它。 |
+| [`WORKDIR`](https://docs.docker.com/engine/reference/builder/#workdir) | Defines the working directory for subsequent instructions in the `Dockerfile` 指定工作目录 |
+| [`ARG`](https://docs.docker.com/engine/reference/builder/#arg) | Defines variables that can be passed by the `docker build --build-arg` command and used within the `Dockerfile`.定义可以通过`docker build --build-arg`命令传递并在Dockerfile中使用的变量。 |
+
 
 如果有一些文件不需要复制到 Docker 镜像当中，那么可是在 Dockerfile 同级目录下面添加一个 `.dockerignore`文件，这样使用 `COPY`或 `ADD`指令的时候将不会把`.dockerignore`中指定文件复制到Docker镜像当中。更多关于`.dockerignore` 语法问题请参考这个[链接](https://docs.docker.com/engine/reference/builder/#dockerignore-file)。
 
-## Docker image
+## Docker images 
 
-镜像由多个层组成，每层叠加之后，从外部看就如同一个独立的对象。镜像内部是一个精简的操作系统，同时还包含应用运行所必须的文件和依赖包。因为容器的设计初衷就是快速和小巧，所以镜像通常比较小。
+Docker镜像由多个层组成（类似于洋葱），每层叠加之后，从外部看就如同一个独立的对象。镜像内部是一个精简的操作系统，同时还包含应用运行所必须的文件和依赖包。因为容器的设计初衷就是快速和小巧，所以镜像通常比较小。
 
 ### 构建镜像和给镜像打标签
 
@@ -154,7 +175,7 @@ docker images
 
 
 
-### 列出镜像
+### 查看镜像
 
 使用`docker images` 或 `docker images ls` 命令可以列出当前本地可用的Docker 镜像
 
@@ -162,8 +183,6 @@ docker images
 docker images
 docker images ls
 ```
-
-
 
 ### 拉取和推送镜像
 
@@ -221,21 +240,21 @@ docker load --input my-app.tar
 
 ## Docker container
 
-容器是镜像的运行时实例。
+我们可以把容器看做是镜像的运行时实例。
 
 ### 运行容器
 
 通过 `docker run ` 命令启动容器
 
-```
+```bash
 docker run my-app:1.0
 ```
 
 上面的命令将会使用 my-app 1.0 的镜像创建容器，执行 `docker run `命令后将会启动容器，还会执行在 Dockerfile 中指定的 CMD 命令。使用 `docker ps `命令可以列出当前所有正在运行的容器。
 
-容器创建成功会Docker会随机生成一个 ContainerID 和 Container Name给容器，我们也可以通过添加 `--name `参数给容器取个好记的名字
+容器创建成功后，Docker会随机生成一个 ContainerID 和 Container Name给容器，我们也可以通过添加 `--name `参数给容器取个好记的名字
 
-```
+```bash
 docker run --name my-app my-app:1.0
 ```
 
@@ -243,15 +262,15 @@ docker run --name my-app my-app:1.0
 
 ### 查看容器日志
 
-默认情况下使用`docker run` 命令运行容器时会将容器中进程的执行日志实时的输出到当前启动的控制台，然而我们可以通过使用 `-d` 参数在分离模式下运行容器，这样就可以继续在控制台中执行命令
+默认情况下使用`docker run` 命令运行容器时会将容器中进程的执行日志实时的输出到当前启动的控制台，然而我们可以通过使用 `-d` 参数在让容器在后台下运行容器，这样就可以继续在控制台中执行命令
 
 [配图说明区别]
 
-```
+```bash
 docker run -d my-app:1.0 
 ```
 
-如果使用分离模式运行容器，那么我们可以使用`docker logs`命令查下容器的日志
+如果使用 `-d`参数在后台运行容器，那么我们可以使用`docker logs`命令查下容器的日志
 
 ```bash
 # 通过容器ID查看
@@ -262,12 +281,60 @@ docker logs my-app
 
 ### 暴露端口
 
-Dockerfile 和 save 打包镜像的区别
+如果容器自身提供一个端口（例如3000），但是在局域网中访问 `http://localhost:3000`是访问不到的，还需要使用下面命令将容器的3000端口映射给 Docker主机的 4000 端口，这个时候在局域网就能正常访问 `http://localhost:4000` 了。
 
-Dockerfile 可以查看详细的历史，
+```
+docker run -p 4000:3000 my-app:1.0
+# 4000 属于主机端口，3000 属于容器自身端口
+```
 
-save 的方式就无法查看打包的历史了，不知道给镜像做了什么事情
+### 停止和删除容器
 
+### 查看容器
+
+### 在容器中执行命令
+
+要在正在运行的容器中运行命令，请使用 `docker exec`命令
+
+```
+docker exec my-app ls
+```
+
+如果想进入容器里面执行命令，需要使用一下命令
+
+```bash
+docker exec -it my-app bash
+```
+
+### 查看容器详情
+
+```bash
+docker inspect my-app
+```
+
+## Docker Volumes
+
+
+
+## Docker networks
+
+
+
+## 其他
+
+### 使用 Dockerfile 和 save 打包镜像的区别
+
+* Dockerfile 可以查看详细的历史
+
+* 使用 docker save 的方式就无法查看打包的历史了，外人不知道作者给镜像做了什么具体的操作
+
+
+
+
+
+## 参考
+
+[Docker guide (robertcooper.me)](https://robertcooper.me/post/docker-guide#removing-images)
 
 
 
