@@ -235,6 +235,46 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2021/05/19/nginx-413-request-entity-too-large/" target="_self">
+          nginx_413_request_entity_too_large
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/05/19/nginx-413-request-entity-too-large/" target="_self">
+        <div>
+          最近客户反映新闻内容上传图片有的时候会出现失败的情况，一开始判断是图片太大导致超时出现的问题，仔细查看发现上传文件的请求出现了 413 request entity too large 的错误，而且这个错误是 nginx 返回的。   查找资料发现 nginx 默认请求的大小只有 1M，后来在 nginx.conf 配置文件中改成 100M 就解决了这个问题。 12345# nginx.conf
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-05-19 13:40" pubdate>
+              2021-05-19
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/nginx/">#nginx</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2021/05/19/nginx-run-as-windows-service/" target="_self">
           在windows服务器上将nginx安装成服务
         </a>
