@@ -29,13 +29,13 @@ Docker network(网络) 可以用来隔离容器，可以允许容器之间彼此
 经常出现虚拟机(vm)与 Docker 相关的话题，因为它们都用来创建隔离的环境。
 使用 Docker后，应用程序将在容器的独立环境下运行，这些容器中的每一个都共享同一个电脑上的操作系统内核。另一方面，在虚拟机上运行的应用程序运行在自己的操作系统上，不共享底层内核，虚拟机需要在 hypervisor 帮助下运行和管理要运行的操作系统。
 
-![Type 1 Hypervisors](/docker-guide.assets/202302272234900.jpeg)
+![Type 1 Hypervisors](./docker-guide.assets/202302272234900.jpeg)
 
 使用Docker相对于虚拟机来说有压倒性的优势，Docker容器可以在几秒钟到几分钟运行起来，而且是轻量级的（MB 相对于GB的大小），容易配置，并且只使用少量的资源。也许使用虚拟机而不是Docker的唯一原因是，由于担心 Docker 容器在主机操作系统上使用共享内核会产生安全漏洞，因此需要更高级别的隔离。
 
 
 
-![image-20230304211323796](/docker-guide.assets/202303042113903.png)
+![image-20230304211323796](./docker-guide.assets/202303042113903.png)
 
 Docker 镜像对于虚拟机区别
 
@@ -57,7 +57,7 @@ Docker 镜像对于虚拟机区别
 
 安装以后，请确保 Docker Desktop 正在运行。如果 Docker Desktop 正在运行，则意味着 Docker Engine 已启动，并且本文提到的 Docker CLI 命令也能执行。
 
-![Docker Desktop is running indicator](/docker-guide.assets/202302272239849.png)
+![Docker Desktop is running indicator](./docker-guide.assets/202302272239849.png)
 
 对于 Linux 用户来说并没有 Docker Desktop软件，所以每个组件必须单独安装
 
@@ -137,7 +137,7 @@ docker build --tag my-app:1.0 .
 # --tag 可以简写成 -t
 docker build -t my-app:1.0 .
 ```
-![image-20210516164412510](/docker-guide.assets/image-20210516164412510.png)
+![image-20210516164412510](./docker-guide.assets/image-20210516164412510.png)
 
 分解上面的命令
 
@@ -150,7 +150,7 @@ docker build -t my-app:1.0 .
 ```
 docker images
 ```
-![image-20210516164445416](/docker-guide.assets/image-20210516164445416.png)
+![image-20210516164445416](./docker-guide.assets/image-20210516164445416.png)
 
 如果构建镜像时只有 `--tag`并没有指定版本的话，那么默认使用的版本就是 `latest`。
 
@@ -158,10 +158,10 @@ docker images
 docker build --tag my-app .
 docker images
 ```
-![image-20210516164919632](/docker-guide.assets/image-20210516164919632.png)
+![image-20210516164919632](./docker-guide.assets/image-20210516164919632.png)
 
 除了使用 `docker build --tag ` 命令给镜像打标签之外，还可以使用 `docker tag`命令。因为同一个镜像可以有多个标签，使用`docker tag `可以给通过`docker build --tag`构建的镜像打上新的标签。
-![image-20210516170500356](/docker-guide.assets/image-20210516170500356.png)
+![image-20210516170500356](./docker-guide.assets/image-20210516170500356.png)
 
 注意：现在my-app有多个镜像版本，它们的 Image ID 都相同但 Repository Name 却不同，但实际上它们都同一个镜像，Repository Name 与使用 `docker push`将镜像推送到Docker镜像仓库的名称有关，在此处不详细展开讲。
 
@@ -193,7 +193,7 @@ docker pull nginx:1.18.0
 ```
 
 上面的命令将从Docker Hub 拉取官方的 1.18.0 版本的 nginx 镜像。
-![image-20210516172205211](/docker-guide.assets/image-20210516172205211.png)
+![image-20210516172205211](./docker-guide.assets/image-20210516172205211.png)
 
 如果不指定nginx 的版本，默认会拉取标记为`latest`最新的版本。
 

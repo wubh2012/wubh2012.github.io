@@ -21,11 +21,11 @@ www.siteB.com => 111.111.111.111:9091
 
 域名A的解析保持不变，域名B 在DNS解析中添加一个隐性URL记录。
 
-![image-20210519193856059](/nginx-support-many-domain.assets/20210519194401.png)
+![image-20210519193856059](./nginx-support-many-domain.assets/20210519194401.png)
 
 当我们访问域名B的时候，浏览器返回的一串下图所示的HTML代码，本质上还是嵌套一个 frame 。
 
-![image-20210519192104079](/nginx-support-many-domain.assets/20210519194405.png)
+![image-20210519192104079](./nginx-support-many-domain.assets/20210519194405.png)
 
 
 

@@ -47,9 +47,9 @@ hexo new "文章标题"
        └── image2.jpg
    ```
 
-2. 在 Markdown 中使用绝对路径引用：
+2. 在 Markdown 中使用**相对路径**引用：
    ```markdown
-   ![图片描述](/我的文章.assets/image1.png)
+   ![图片描述](./我的文章.assets/image1.png)
    ```
 
 3. 图片目录命名规则：`文章标题.assets`（与 md 文件同名）
@@ -59,7 +59,7 @@ hexo new "文章标题"
 如果图片无法显示，按以下顺序检查：
 
 1. 确认 `.assets` 目录与 `.md` 文件同名
-2. 确认 Markdown 中使用的是绝对路径：`/文章名.assets/图片名.png`
+2. 确认 Markdown 中使用的是**相对路径**：`./文章名.assets/图片名.png`（注意是 `./` 不是 `/`）
 3. 确认已运行 `npm run build` 而非 `hexo generate`，后者不会复制 `.assets` 目录
 4. 本地预览：`npm run server`，滚动页面触发懒加载
 
@@ -67,16 +67,16 @@ hexo new "文章标题"
 
 - `_config.yml` 中的 `post_asset_folder: true` 已启用
 - `.md` 文件中不要使用外部图片 URL（如 `https://static.xxx.com/xxx.png`），图片全部本地化
-- 文章永久链接格式：`:year/:month/:day/:title/`，图片不受此影响使用根目录绝对路径
+- 文章永久链接格式：`:year/:month/:day/:title/`，`.assets` 目录会复制到文章输出目录的同级位置，图片使用相对路径 `./文章名.assets/xxx.png` 引用
 
 ## 部署流程
 
 ```bash
-# 1. 本地预览确认无误
-npm run server
-
-# 2. 构建生产文件
+# 1. 构建生产文件（会自动复制 .assets 目录）
 npm run build
+
+# 2. 本地预览确认无误
+npm run server
 
 # 3. 部署到 GitHub
 npm run deploy

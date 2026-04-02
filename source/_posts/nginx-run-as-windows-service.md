@@ -8,13 +8,13 @@ tags: ["nginx"]
 
 1. 首先去下载 winsw 软件，[下载地址](https://github.com/winsw/winsw/releases), 我下载的是 `WinSW.NET4.exe` ,因为我的服务器上安装了 .NET Framework 4.0，当然你也可以选择下载其他的版本，然后把下载后的文件放在和 nginx.exe 相同目录当中。
 
-   ![image-20210519130237719](/nginx-run-as-windows-service.assets/20210519133028.png)
+   ![image-20210519130237719](./nginx-run-as-windows-service.assets/20210519133028.png)
 
 
 
 2. 将 `WinSW.NET4.exe` 文件重命名为 `nginx-service.exe`，这样方便在任务管理器中查找进程。
 
-   ![image-20210519132458822](/nginx-run-as-windows-service.assets/20210519133034.png)
+   ![image-20210519132458822](./nginx-run-as-windows-service.assets/20210519133034.png)
 
 3. 创建 `nginx-service.xml` 文件，将下面的内容复制进去（你可能需要改下nginx的路径）
 
@@ -37,7 +37,7 @@ tags: ["nginx"]
 
 4. 在命令行中运行 `nginx-service.exe install` 安装服务，安装成功后，你可以在服务中查看到
 
-![微信截图_20210519130929](/nginx-run-as-windows-service.assets/20210519133037.png)
+![微信截图_20210519130929](./nginx-run-as-windows-service.assets/20210519133037.png)
 
   
 

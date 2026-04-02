@@ -13,7 +13,7 @@ systemctl --version
 
 frp 也是支持 Systemd 的，我们下载的frp文件当中就包含了一个 systemd 文件夹，里面就包含了 frps 和 frpc 的服务配置文件
 
-![image-20201220160339843](/frp使用systemd在linux系统下实现开机自动运行.assets/20201220165016.png)
+![image-20201220160339843](./frp使用systemd在linux系统下实现开机自动运行.assets/20201220165016.png)
 
 我们使用 cat 命令查看一下配置文件内容 `cat frps.service`
 
@@ -55,7 +55,7 @@ sudo systemctl enable frps.service
 
 ```
 
-![image-20201220164646349](/frp使用systemd在linux系统下实现开机自动运行.assets/20201220165207.png)
+![image-20201220164646349](./frp使用systemd在linux系统下实现开机自动运行.assets/20201220165207.png)
 
 ```
 # 启动 frps 服务
@@ -66,7 +66,7 @@ sudo systemctl status frps.service
 
 
 
-![image-20201220164606524](/frp使用systemd在linux系统下实现开机自动运行.assets/20201220165202.png)
+![image-20201220164606524](./frp使用systemd在linux系统下实现开机自动运行.assets/20201220165202.png)
 
 
 参考链接 

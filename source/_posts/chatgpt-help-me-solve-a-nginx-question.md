@@ -24,44 +24,44 @@ tags: ["Nginx", "chatgpt"]
 
 我向 ChatGPT 说明了我要咨询关于 Nginx 反向代理的问题，并简单介绍了背景。ChatGPT 很快就理解了我的问题，并提供了如下的 Nginx 配置
 
-![image-20230318113917729](/chatgpt-help-me-solve-a-nginx-question.assets/202303181318732.png)
+![image-20230318113917729](./chatgpt-help-me-solve-a-nginx-question.assets/202303181318732.png)
 
 接着 ChatGPT 就给出了 nginx 的配置
 
-![image-20230318114659020](/chatgpt-help-me-solve-a-nginx-question.assets/202303181318673.png)
+![image-20230318114659020](./chatgpt-help-me-solve-a-nginx-question.assets/202303181318673.png)
 
-![image-20230318114716184](/chatgpt-help-me-solve-a-nginx-question.assets/202303181318441.png)
+![image-20230318114716184](./chatgpt-help-me-solve-a-nginx-question.assets/202303181318441.png)
 
-![image-20230318114726801](/chatgpt-help-me-solve-a-nginx-question.assets/202303181318954.png)
+![image-20230318114726801](./chatgpt-help-me-solve-a-nginx-question.assets/202303181318954.png)
 
 如果访问的地址变了，它又会重新修改配置。
 
-![image-20230318114830619](/chatgpt-help-me-solve-a-nginx-question.assets/202303181318368.png)
+![image-20230318114830619](./chatgpt-help-me-solve-a-nginx-question.assets/202303181318368.png)
 
 我对它写的 if 语句不清楚是用来做什么的，它也能给出相应的解释。
 
-![image-20230318115111472](/chatgpt-help-me-solve-a-nginx-question.assets/202303181318796.png)
+![image-20230318115111472](./chatgpt-help-me-solve-a-nginx-question.assets/202303181318796.png)
 
 这个时候我大概明白了，只要我们拿到 $1 变量，就可以实现根据照片的文件名来反向代理服务器的请求。但是之前它提供的 upstream 配置中并没有QC1和QC2对应的地址，还是继续让 ChatGPT 修改。
 
-![image-20230318121144872](/chatgpt-help-me-solve-a-nginx-question.assets/202303181318297.png)
+![image-20230318121144872](./chatgpt-help-me-solve-a-nginx-question.assets/202303181318297.png)
 
 
-![image-20230318121725378](/chatgpt-help-me-solve-a-nginx-question.assets/202303181318352.png)
+![image-20230318121725378](./chatgpt-help-me-solve-a-nginx-question.assets/202303181318352.png)
 
 调整好后，让 ChatGPT 重新生成一个完整的 nginx 配置。
 
-![image-20230318122050247](/chatgpt-help-me-solve-a-nginx-question.assets/202303181318515.png)
+![image-20230318122050247](./chatgpt-help-me-solve-a-nginx-question.assets/202303181318515.png)
 
 好了，我们把这个配置复制到服务器上，再稍微修改调整一些，重新启动了 Nginx，并使用浏览器测试了一下。
 
 下面是QC1和QC2服务器上面的两张照片
 
-![QC1和QC2服务器上的照片](/chatgpt-help-me-solve-a-nginx-question.assets/202303181319176.png)
+![QC1和QC2服务器上的照片](./chatgpt-help-me-solve-a-nginx-question.assets/202303181319176.png)
 
 我们通过 http://localhost:8029 （web服务器）分别去访问这两张照片，一切都运行正常，根据照片的文件名，Nginx 正确地将请求转发到了对应的服务器，照片也能够正确地显示出来，🎉🎉🎉！
 
-![验证访问](/chatgpt-help-me-solve-a-nginx-question.assets/202303181319596.png)
+![验证访问](./chatgpt-help-me-solve-a-nginx-question.assets/202303181319596.png)
 
 
 ## 总结
