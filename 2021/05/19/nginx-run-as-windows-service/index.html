@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://blog.aalmix.com/nginx-run-as-windows-service.assets/20210519133034.png">
 <meta property="og:image" content="https://blog.aalmix.com/nginx-run-as-windows-service.assets/20210519133037.png">
 <meta property="article:published_time" content="2021-05-19T12:46:06.000Z">
-<meta property="article:modified_time" content="2026-04-02T06:21:14.848Z">
+<meta property="article:modified_time" content="2026-04-02T07:18:39.683Z">
 <meta property="article:author" content="aalmix">
 <meta property="article:tag" content="nginx">
 <meta name="twitter:card" content="summary_large_image">
@@ -298,10 +298,10 @@
                 <p>在 windows 服务器上将 nginx 注册成服务需要借助第三方软件 <code>Windows Service Wrapper</code>，简称 winsw，下面介绍如何使用</p>
 <ol>
 <li><p>首先去下载 winsw 软件，<a target="_blank" rel="noopener" href="https://github.com/winsw/winsw/releases">下载地址</a>, 我下载的是 <code>WinSW.NET4.exe</code> ,因为我的服务器上安装了 .NET Framework 4.0，当然你也可以选择下载其他的版本，然后把下载后的文件放在和 nginx.exe 相同目录当中。</p>
-<p><img src="/nginx-run-as-windows-service.assets/20210519133028.png" srcset="/img/loading.gif" lazyload alt="image-20210519130237719"></p>
+<p><img src="/./nginx-run-as-windows-service.assets/20210519133028.png" srcset="/img/loading.gif" lazyload alt="image-20210519130237719"></p>
 </li>
 <li><p>将 <code>WinSW.NET4.exe</code> 文件重命名为 <code>nginx-service.exe</code>，这样方便在任务管理器中查找进程。</p>
-<p><img src="/nginx-run-as-windows-service.assets/20210519133034.png" srcset="/img/loading.gif" lazyload alt="image-20210519132458822"></p>
+<p><img src="/./nginx-run-as-windows-service.assets/20210519133034.png" srcset="/img/loading.gif" lazyload alt="image-20210519132458822"></p>
 </li>
 <li><p>创建 <code>nginx-service.xml</code> 文件，将下面的内容复制进去（你可能需要改下nginx的路径）</p>
 </li>
@@ -314,7 +314,7 @@
 <ol start="4">
 <li>在命令行中运行 <code>nginx-service.exe install</code> 安装服务，安装成功后，你可以在服务中查看到</li>
 </ol>
-<p><img src="/nginx-run-as-windows-service.assets/20210519133037.png" srcset="/img/loading.gif" lazyload alt="微信截图_20210519130929"></p>
+<p><img src="/./nginx-run-as-windows-service.assets/20210519133037.png" srcset="/img/loading.gif" lazyload alt="微信截图_20210519130929"></p>
 <p>后面你可以通过下面的命令管理 nginx 服务</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">net start nginx  <span class="hljs-comment"># 启动服务</span><br>net stop nginx   <span class="hljs-comment"># 停止服务</span><br><br>nginx-service.exe start <span class="hljs-comment"># 查看服务状态</span><br>nginx-service.exe status <span class="hljs-comment"># 查看服务状态</span><br>nginx-service.exe stop  <span class="hljs-comment"># 停止服务</span><br>nginx-service.exe restart  <span class="hljs-comment"># 重启服务</span><br>nginx-service.exe uninstall  <span class="hljs-comment"># 卸载服务</span><br></code></pre></td></tr></table></figure>
 
@@ -397,8 +397,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/12/20/frp%E4%BD%BF%E7%94%A8systemd%E5%9C%A8linux%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%9E%E7%8E%B0%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E8%BF%90%E8%A1%8C/" title="frp使用systemd在linux系统下实现开机自动运行">
-                        <span class="hidden-mobile">frp使用systemd在linux系统下实现开机自动运行</span>
+                      <a href="/2020/12/20/JavaScript%20%E5%87%BD%E6%95%B0%E4%BD%9C%E7%94%A8%E5%9F%9F%E8%A7%A3%E9%87%8A/" title="JavaScript 函数作用域的解释">
+                        <span class="hidden-mobile">JavaScript 函数作用域的解释</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

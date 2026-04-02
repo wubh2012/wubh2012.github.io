@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://blog.aalmix.com/docker-guide.assets/image-20210516170500356.png">
 <meta property="og:image" content="https://blog.aalmix.com/docker-guide.assets/image-20210516172205211.png">
 <meta property="article:published_time" content="2022-04-09T02:37:09.000Z">
-<meta property="article:modified_time" content="2026-04-02T06:21:14.839Z">
+<meta property="article:modified_time" content="2026-04-02T07:18:39.673Z">
 <meta property="article:author" content="aalmix">
 <meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary_large_image">
@@ -309,9 +309,9 @@
 <p>Docker volumes(存储卷) 用于保存容器所产生的数据，将数据保存到 Docker 存储卷中后，即使 Docker 容器被删除、重新创建、重新启动，数据也不会丢失。Docker volumen支持2个容器共享访问相同的数据，只需要将容器的的存储卷指向相同的位置就可以。</p>
 <p>Docker network(网络) 可以用来隔离容器，可以允许容器之间彼此通信。</p>
 <h2 id="那么虚拟机呢-virtual-machines？"><a href="#那么虚拟机呢-virtual-machines？" class="headerlink" title="那么虚拟机呢 virtual machines？"></a>那么虚拟机呢 virtual machines？</h2><p>经常出现虚拟机(vm)与 Docker 相关的话题，因为它们都用来创建隔离的环境。<br>使用 Docker后，应用程序将在容器的独立环境下运行，这些容器中的每一个都共享同一个电脑上的操作系统内核。另一方面，在虚拟机上运行的应用程序运行在自己的操作系统上，不共享底层内核，虚拟机需要在 hypervisor 帮助下运行和管理要运行的操作系统。</p>
-<p><img src="/docker-guide.assets/202302272234900.jpeg" srcset="/img/loading.gif" lazyload alt="Type 1 Hypervisors"></p>
+<p><img src="/./docker-guide.assets/202302272234900.jpeg" srcset="/img/loading.gif" lazyload alt="Type 1 Hypervisors"></p>
 <p>使用Docker相对于虚拟机来说有压倒性的优势，Docker容器可以在几秒钟到几分钟运行起来，而且是轻量级的（MB 相对于GB的大小），容易配置，并且只使用少量的资源。也许使用虚拟机而不是Docker的唯一原因是，由于担心 Docker 容器在主机操作系统上使用共享内核会产生安全漏洞，因此需要更高级别的隔离。</p>
-<p><img src="/docker-guide.assets/202303042113903.png" srcset="/img/loading.gif" lazyload alt="image-20230304211323796"></p>
+<p><img src="/./docker-guide.assets/202303042113903.png" srcset="/img/loading.gif" lazyload alt="image-20230304211323796"></p>
 <p>Docker 镜像对于虚拟机区别</p>
 <table>
 <thead>
@@ -348,7 +348,7 @@
 <li>Windows <a target="_blank" rel="noopener" href="https://docs.docker.com/docker-for-windows/install/">https://docs.docker.com/docker-for-windows/install/</a></li>
 </ul>
 <p>安装以后，请确保 Docker Desktop 正在运行。如果 Docker Desktop 正在运行，则意味着 Docker Engine 已启动，并且本文提到的 Docker CLI 命令也能执行。</p>
-<p><img src="/docker-guide.assets/202302272239849.png" srcset="/img/loading.gif" lazyload alt="Docker Desktop is running indicator"></p>
+<p><img src="/./docker-guide.assets/202302272239849.png" srcset="/img/loading.gif" lazyload alt="Docker Desktop is running indicator"></p>
 <p>对于 Linux 用户来说并没有 Docker Desktop软件，所以每个组件必须单独安装</p>
 <ul>
 <li><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/">Docker Engine + CLI </a></li>
@@ -418,7 +418,7 @@
 <h2 id="Docker-images"><a href="#Docker-images" class="headerlink" title="Docker images"></a>Docker images</h2><p>Docker镜像由多个层组成（类似于洋葱），每层叠加之后，从外部看就如同一个独立的对象。镜像内部是一个精简的操作系统，同时还包含应用运行所必须的文件和依赖包。因为容器的设计初衷就是快速和小巧，所以镜像通常比较小。</p>
 <h3 id="构建镜像和给镜像打标签"><a href="#构建镜像和给镜像打标签" class="headerlink" title="构建镜像和给镜像打标签"></a>构建镜像和给镜像打标签</h3><p>使用 <code>docker build </code>命令来创建镜像，当构建镜像时会提供一个 <code>--tag</code>选项给镜像打标签，这样就知道从镜像仓库中使用哪个镜像，或者在运行容器时使用哪个镜像了。 </p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">docker</span> build --tag my-app:<span class="hljs-number">1</span>.<span class="hljs-number">0</span> . <br><span class="hljs-comment"># --tag 可以简写成 -t</span><br><span class="hljs-attribute">docker</span> build -t my-app:<span class="hljs-number">1</span>.<span class="hljs-number">0</span> .<br></code></pre></td></tr></table></figure>
-<p><img src="/docker-guide.assets/image-20210516164412510.png" srcset="/img/loading.gif" lazyload alt="image-20210516164412510"></p>
+<p><img src="/./docker-guide.assets/image-20210516164412510.png" srcset="/img/loading.gif" lazyload alt="image-20210516164412510"></p>
 <p>分解上面的命令</p>
 <ul>
 <li><code>docker build</code> 指定正在创建Docker镜像</li>
@@ -427,11 +427,11 @@
 </ul>
 <p>使用 <code>docker images</code> 命令可以查看所有的本地的镜像，这样就可以验证镜像刚刚已经创建成功</p>
 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">docker images</span><br></code></pre></td></tr></table></figure>
-<p><img src="/docker-guide.assets/image-20210516164445416.png" srcset="/img/loading.gif" lazyload alt="image-20210516164445416"></p>
+<p><img src="/./docker-guide.assets/image-20210516164445416.png" srcset="/img/loading.gif" lazyload alt="image-20210516164445416"></p>
 <p>如果构建镜像时只有 <code>--tag</code>并没有指定版本的话，那么默认使用的版本就是 <code>latest</code>。</p>
 <figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">docker build --<span class="hljs-keyword">tag</span> <span class="hljs-title">my-app</span> .<br>docker images<br></code></pre></td></tr></table></figure>
-<p><img src="/docker-guide.assets/image-20210516164919632.png" srcset="/img/loading.gif" lazyload alt="image-20210516164919632"></p>
-<p>除了使用 <code>docker build --tag </code> 命令给镜像打标签之外，还可以使用 <code>docker tag</code>命令。因为同一个镜像可以有多个标签，使用<code>docker tag </code>可以给通过<code>docker build --tag</code>构建的镜像打上新的标签。<br><img src="/docker-guide.assets/image-20210516170500356.png" srcset="/img/loading.gif" lazyload alt="image-20210516170500356"></p>
+<p><img src="/./docker-guide.assets/image-20210516164919632.png" srcset="/img/loading.gif" lazyload alt="image-20210516164919632"></p>
+<p>除了使用 <code>docker build --tag </code> 命令给镜像打标签之外，还可以使用 <code>docker tag</code>命令。因为同一个镜像可以有多个标签，使用<code>docker tag </code>可以给通过<code>docker build --tag</code>构建的镜像打上新的标签。<br><img src="/./docker-guide.assets/image-20210516170500356.png" srcset="/img/loading.gif" lazyload alt="image-20210516170500356"></p>
 <p>注意：现在my-app有多个镜像版本，它们的 Image ID 都相同但 Repository Name 却不同，但实际上它们都同一个镜像，Repository Name 与使用 <code>docker push</code>将镜像推送到Docker镜像仓库的名称有关，在此处不详细展开讲。</p>
 <blockquote>
 <p>注意镜像的标签是可变的</p>
@@ -445,7 +445,7 @@
 <h3 id="拉取和推送镜像"><a href="#拉取和推送镜像" class="headerlink" title="拉取和推送镜像"></a>拉取和推送镜像</h3><p>Docker 镜像可以保存在Docker镜像注册中心，默认的中心是 Docker Hub 。从Docker Hub拉取镜像使用<code>docker pull</code>命令：</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">docker</span> pull nginx:<span class="hljs-number">1</span>.<span class="hljs-number">18</span>.<span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
 
-<p>上面的命令将从Docker Hub 拉取官方的 1.18.0 版本的 nginx 镜像。<br><img src="/docker-guide.assets/image-20210516172205211.png" srcset="/img/loading.gif" lazyload alt="image-20210516172205211"></p>
+<p>上面的命令将从Docker Hub 拉取官方的 1.18.0 版本的 nginx 镜像。<br><img src="/./docker-guide.assets/image-20210516172205211.png" srcset="/img/loading.gif" lazyload alt="image-20210516172205211"></p>
 <p>如果不指定nginx 的版本，默认会拉取标记为<code>latest</code>最新的版本。</p>
 <p>上面使用nginx 镜像都是来自Docker Hub的官方镜像，官方的镜像一般都是经过Docker Hub正式批准的镜像，并且这些镜像会定期进行安全漏洞测试。</p>
 <p>任何人都可以在Docker Hub上创建自己的账号和仓库，并箱仓库中推送镜像。把镜像推送到Docker Hub意味着镜像被保存在Docker Hub 中。docker push 命令的形式类似下面的命令</p>
