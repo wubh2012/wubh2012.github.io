@@ -24,15 +24,15 @@
 <meta property="og:site_name" content="水果芋头">
 <meta property="og:description" content="在 windows 服务器上将 nginx 注册成服务需要借助第三方软件 Windows Service Wrapper，简称 winsw，下面介绍如何使用  首先去下载 winsw 软件，下载地址, 我下载的是 WinSW.NET4.exe ,因为我的服务器上安装了 .NET Framework 4.0，当然你也可以选择下载其他的版本，然后把下载后的文件放在和 nginx.exe 相同目录当中。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://blog.aalmix.com/.assets/20210519133028.png">
-<meta property="og:image" content="https://blog.aalmix.com/.assets/20210519133034.png">
-<meta property="og:image" content="https://blog.aalmix.com/.assets/20210519133037.png">
+<meta property="og:image" content="https://blog.aalmix.com/nginx-run-as-windows-service.assets/20210519133028.png">
+<meta property="og:image" content="https://blog.aalmix.com/nginx-run-as-windows-service.assets/20210519133034.png">
+<meta property="og:image" content="https://blog.aalmix.com/nginx-run-as-windows-service.assets/20210519133037.png">
 <meta property="article:published_time" content="2021-05-19T12:46:06.000Z">
-<meta property="article:modified_time" content="2026-04-02T07:52:34.967Z">
+<meta property="article:modified_time" content="2026-04-02T08:45:21.488Z">
 <meta property="article:author" content="aalmix">
 <meta property="article:tag" content="nginx">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://blog.aalmix.com/.assets/20210519133028.png">
+<meta name="twitter:image" content="https://blog.aalmix.com/nginx-run-as-windows-service.assets/20210519133028.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -298,10 +298,10 @@
                 <p>在 windows 服务器上将 nginx 注册成服务需要借助第三方软件 <code>Windows Service Wrapper</code>，简称 winsw，下面介绍如何使用</p>
 <ol>
 <li><p>首先去下载 winsw 软件，<a target="_blank" rel="noopener" href="https://github.com/winsw/winsw/releases">下载地址</a>, 我下载的是 <code>WinSW.NET4.exe</code> ,因为我的服务器上安装了 .NET Framework 4.0，当然你也可以选择下载其他的版本，然后把下载后的文件放在和 nginx.exe 相同目录当中。</p>
-<p><img src="/.assets/20210519133028.png" srcset="/img/loading.gif" lazyload alt="image-20210519130237719"></p>
+<p><img src="/nginx-run-as-windows-service.assets/20210519133028.png" srcset="/img/loading.gif" lazyload alt="image-20210519130237719"></p>
 </li>
 <li><p>将 <code>WinSW.NET4.exe</code> 文件重命名为 <code>nginx-service.exe</code>，这样方便在任务管理器中查找进程。</p>
-<p><img src="/.assets/20210519133034.png" srcset="/img/loading.gif" lazyload alt="image-20210519132458822"></p>
+<p><img src="/nginx-run-as-windows-service.assets/20210519133034.png" srcset="/img/loading.gif" lazyload alt="image-20210519132458822"></p>
 </li>
 <li><p>创建 <code>nginx-service.xml</code> 文件，将下面的内容复制进去（你可能需要改下nginx的路径）</p>
 </li>
@@ -314,7 +314,7 @@
 <ol start="4">
 <li>在命令行中运行 <code>nginx-service.exe install</code> 安装服务，安装成功后，你可以在服务中查看到</li>
 </ol>
-<p><img src="/.assets/20210519133037.png" srcset="/img/loading.gif" lazyload alt="微信截图_20210519130929"></p>
+<p><img src="/nginx-run-as-windows-service.assets/20210519133037.png" srcset="/img/loading.gif" lazyload alt="微信截图_20210519130929"></p>
 <p>后面你可以通过下面的命令管理 nginx 服务</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">net start nginx  <span class="hljs-comment"># 启动服务</span><br>net stop nginx   <span class="hljs-comment"># 停止服务</span><br><br>nginx-service.exe start <span class="hljs-comment"># 查看服务状态</span><br>nginx-service.exe status <span class="hljs-comment"># 查看服务状态</span><br>nginx-service.exe stop  <span class="hljs-comment"># 停止服务</span><br>nginx-service.exe restart  <span class="hljs-comment"># 重启服务</span><br>nginx-service.exe uninstall  <span class="hljs-comment"># 卸载服务</span><br></code></pre></td></tr></table></figure>
 

@@ -24,21 +24,21 @@
 <meta property="og:site_name" content="水果芋头">
 <meta property="og:description" content="写在前面在之前的文章中介绍了在 Windows 上运行frp的客户端需要在命令行中输入一下命令 1frpc.exe -c frpc.ini  但是如何不小心关掉了命令行窗口就需要手动重新打开，当然也可以把上面的命令复制后另存为run.bat文件，下次双击运行就可以使用，但是我们还是想实现开机自动运行，那么该如何做呢？ 这个时候我们需要借助第三方的工具 nssm， nssm 官网的介绍如下  nss">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://blog.aalmix.com/.assets/20201106173532.png">
-<meta property="og:image" content="https://blog.aalmix.com/.assets/20201106173550.png">
-<meta property="og:image" content="https://blog.aalmix.com/.assets/20201106173557.png">
-<meta property="og:image" content="https://blog.aalmix.com/.assets/20201106173601.png">
-<meta property="og:image" content="https://blog.aalmix.com/.assets/20201106173603.png">
-<meta property="og:image" content="https://blog.aalmix.com/.assets/20201106173606.png">
-<meta property="og:image" content="https://blog.aalmix.com/.assets/20201106173609.png">
-<meta property="og:image" content="https://blog.aalmix.com/.assets/20201106173612.png">
-<meta property="og:image" content="https://blog.aalmix.com/.assets/20201106173615.png">
+<meta property="og:image" content="https://blog.aalmix.com/%E5%9C%A8windows%E4%B8%8A%E8%AE%BE%E7%BD%AEfrp%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8.assets/20201106173532.png">
+<meta property="og:image" content="https://blog.aalmix.com/%E5%9C%A8windows%E4%B8%8A%E8%AE%BE%E7%BD%AEfrp%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8.assets/20201106173550.png">
+<meta property="og:image" content="https://blog.aalmix.com/%E5%9C%A8windows%E4%B8%8A%E8%AE%BE%E7%BD%AEfrp%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8.assets/20201106173557.png">
+<meta property="og:image" content="https://blog.aalmix.com/%E5%9C%A8windows%E4%B8%8A%E8%AE%BE%E7%BD%AEfrp%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8.assets/20201106173601.png">
+<meta property="og:image" content="https://blog.aalmix.com/%E5%9C%A8windows%E4%B8%8A%E8%AE%BE%E7%BD%AEfrp%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8.assets/20201106173603.png">
+<meta property="og:image" content="https://blog.aalmix.com/%E5%9C%A8windows%E4%B8%8A%E8%AE%BE%E7%BD%AEfrp%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8.assets/20201106173606.png">
+<meta property="og:image" content="https://blog.aalmix.com/%E5%9C%A8windows%E4%B8%8A%E8%AE%BE%E7%BD%AEfrp%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8.assets/20201106173609.png">
+<meta property="og:image" content="https://blog.aalmix.com/%E5%9C%A8windows%E4%B8%8A%E8%AE%BE%E7%BD%AEfrp%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8.assets/20201106173612.png">
+<meta property="og:image" content="https://blog.aalmix.com/%E5%9C%A8windows%E4%B8%8A%E8%AE%BE%E7%BD%AEfrp%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8.assets/20201106173615.png">
 <meta property="article:published_time" content="2020-11-05T20:55:59.000Z">
-<meta property="article:modified_time" content="2026-04-02T07:52:34.977Z">
+<meta property="article:modified_time" content="2026-04-02T08:45:21.497Z">
 <meta property="article:author" content="aalmix">
 <meta property="article:tag" content="frp">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://blog.aalmix.com/.assets/20201106173532.png">
+<meta name="twitter:image" content="https://blog.aalmix.com/%E5%9C%A8windows%E4%B8%8A%E8%AE%BE%E7%BD%AEfrp%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8.assets/20201106173532.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -311,32 +311,32 @@
 </blockquote>
 <p>大概的意思就是 nssm 可以将程序注册成 windows 服务，并且会监听正在运行的服务，当服务死了之后会自动重启。</p>
 <h3 id="下载-nssm"><a href="#下载-nssm" class="headerlink" title="下载 nssm"></a>下载 nssm</h3><p>先去 <a target="_blank" rel="noopener" href="https://nssm.cc/download">https://nssm.cc/download</a> 这个地址下载 nssm, 下载后的文件非常小只有 300+ KB，算的上是短小精悍。</p>
-<p><img src="/.assets/20201106173532.png" srcset="/img/loading.gif" lazyload alt="image-20201105213254604"></p>
+<p><img src="/%E5%9C%A8windows%E4%B8%8A%E8%AE%BE%E7%BD%AEfrp%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8.assets/20201106173532.png" srcset="/img/loading.gif" lazyload alt="image-20201105213254604"></p>
 <h3 id="如何使用-nssm"><a href="#如何使用-nssm" class="headerlink" title="如何使用 nssm"></a>如何使用 nssm</h3><ol>
 <li>进入命令行窗口，输入<code>nssm install </code></li>
 </ol>
-<p><img src="/.assets/20201106173550.png" srcset="/img/loading.gif" lazyload alt="image-20201105213622063"></p>
-<p><img src="/.assets/20201106173557.png" srcset="/img/loading.gif" lazyload alt="image-20201105213739577"></p>
+<p><img src="/%E5%9C%A8windows%E4%B8%8A%E8%AE%BE%E7%BD%AEfrp%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8.assets/20201106173550.png" srcset="/img/loading.gif" lazyload alt="image-20201105213622063"></p>
+<p><img src="/%E5%9C%A8windows%E4%B8%8A%E8%AE%BE%E7%BD%AEfrp%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8.assets/20201106173557.png" srcset="/img/loading.gif" lazyload alt="image-20201105213739577"></p>
 <ol start="2">
 <li>执行之后会显示下面这个页面，选择 frpc 程序的路径，以及启动的参数</li>
 </ol>
-<p><img src="/.assets/20201106173601.png" srcset="/img/loading.gif" lazyload alt="image-20201105213843898"></p>
-<p><img src="/.assets/20201106173603.png" srcset="/img/loading.gif" lazyload alt="image-20201105214258612"></p>
+<p><img src="/%E5%9C%A8windows%E4%B8%8A%E8%AE%BE%E7%BD%AEfrp%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8.assets/20201106173601.png" srcset="/img/loading.gif" lazyload alt="image-20201105213843898"></p>
+<p><img src="/%E5%9C%A8windows%E4%B8%8A%E8%AE%BE%E7%BD%AEfrp%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8.assets/20201106173603.png" srcset="/img/loading.gif" lazyload alt="image-20201105214258612"></p>
 <ol start="3">
 <li>填写服务的显示名称以及服务说明，还有启动方式，默认是自动自动</li>
 </ol>
-<p><img src="/.assets/20201106173606.png" srcset="/img/loading.gif" lazyload alt="image-20201105214507281"></p>
+<p><img src="/%E5%9C%A8windows%E4%B8%8A%E8%AE%BE%E7%BD%AEfrp%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8.assets/20201106173606.png" srcset="/img/loading.gif" lazyload alt="image-20201105214507281"></p>
 <ol start="4">
 <li><p>配置程序输入和输出日志存放位置（可选）</p>
-<p><img src="/.assets/20201106173609.png" srcset="/img/loading.gif" lazyload alt="image-20201105215008339"></p>
+<p><img src="/%E5%9C%A8windows%E4%B8%8A%E8%AE%BE%E7%BD%AEfrp%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8.assets/20201106173609.png" srcset="/img/loading.gif" lazyload alt="image-20201105215008339"></p>
 <ol start="5">
 <li>点击 <code>Install service</code> 按钮安装服务</li>
 </ol>
 </li>
 </ol>
 <h3 id="管理服务"><a href="#管理服务" class="headerlink" title="管理服务"></a>管理服务</h3><p>按下<code>Win+R</code>键，在运行中输入<code>service.msc</code> 命令打开服务管理器，我们就可以看到刚刚安装的frp服务了，然后我们就向其他windows服务一样控制它启动，停止，重启了。</p>
-<p><img src="/.assets/20201106173612.png" srcset="/img/loading.gif" lazyload alt="image-20201105215255665"></p>
-<p><img src="/.assets/20201106173615.png" srcset="/img/loading.gif" lazyload alt="image-20201105215411888"></p>
+<p><img src="/%E5%9C%A8windows%E4%B8%8A%E8%AE%BE%E7%BD%AEfrp%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8.assets/20201106173612.png" srcset="/img/loading.gif" lazyload alt="image-20201105215255665"></p>
+<p><img src="/%E5%9C%A8windows%E4%B8%8A%E8%AE%BE%E7%BD%AEfrp%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8.assets/20201106173615.png" srcset="/img/loading.gif" lazyload alt="image-20201105215411888"></p>
 <p>当前我们可以通过 nssm 的命令行的形式控制它</p>
 <figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs gherkin"><span class="hljs-comment"># 启动</span><br>nssm start <span class="hljs-variable">&lt;servicename&gt;</span><br><br><span class="hljs-comment"># 停止</span><br>nssm stop <span class="hljs-variable">&lt;servicename&gt;</span><br><br><span class="hljs-comment"># 重启</span><br>nssm restart <span class="hljs-variable">&lt;servicename&gt;</span><br><br><span class="hljs-comment"># 修改服务配置</span><br>nssm edit <span class="hljs-variable">&lt;servicename&gt;</span><br><br><span class="hljs-comment"># 删除服务 </span><br>nssm remove <span class="hljs-variable">&lt;servicename&gt;</span><br><br></code></pre></td></tr></table></figure>
 
