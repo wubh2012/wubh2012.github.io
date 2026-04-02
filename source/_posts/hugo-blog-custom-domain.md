@@ -9,10 +9,10 @@ tags: ["博客", "hugo"]
 
 首先我们需要配置 DNS 解析，以腾讯云为例，在腾讯云的 DNS 解析记录中添加一个 CNAME 记录，主机记录的值为 `blog`，记录值为`wubh2012.github.io`
 
-![20220526132439](.assets/20220526132439.png)
+![20220526132439](hugo-blog-custom-domain.assets/20220526132439.png)
 
 然后在 github page 的 Custom domain 填写记录值 `blog.aalmix.com`
 
-![20220525214629](.assets/20220525214629.png)
+![20220525214629](hugo-blog-custom-domain.assets/20220525214629.png)
 
 最后，我们可以使用 https://blog.aalmix.com 地址去访问我们的博客了！

@@ -148,13 +148,13 @@ tags: ['SpringBoot', '部署']
 <!--分离式Jar包打包配置结束-->
 ```
 
-![微信截图_20230716173306](.assets/202307161754552.png)
+![微信截图_20230716173306](SpringBoot分离式打包部署.assets/202307161754552.png)
 
-![image-20230716173647399](.assets/202307161756224.png)
+![image-20230716173647399](SpringBoot分离式打包部署.assets/202307161756224.png)
 
-![image-20230716173729820](.assets/202307161756277.png)
+![image-20230716173729820](SpringBoot分离式打包部署.assets/202307161756277.png)
 
-![image-20230716173810633](.assets/202307161756830.png)
+![image-20230716173810633](SpringBoot分离式打包部署.assets/202307161756830.png)
 
 config：所有的配置文件、静态文件会存放在 config 文件夹下
 
@@ -186,7 +186,7 @@ java -jar fireworks-mobile.jar
 
 当我们使用上面的分离式配置打包运行后，发现会提示 `ClassNotFoundException`
 
-![image-20230716174008123](.assets/202307161756708.png)
+![image-20230716174008123](SpringBoot分离式打包部署.assets/202307161756708.png)
 
 这是因为 maven 默认是不会将 system scope 的 jar 放入 lib 目录，这个时候需要一些特殊处理。
 
@@ -204,7 +204,7 @@ java -jar fireworks-mobile.jar
 
 2. 在打包后将项目中 lib/plat-local-core-1.0.6.jar 手动复制到打包后的 lib 目录中，这样程序运行起来的时候才不会出错。
 
-   ![image-20230716174407163](.assets/202307161756822.png)
+   ![image-20230716174407163](SpringBoot分离式打包部署.assets/202307161756822.png)
 
 ## 总结
 
