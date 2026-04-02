@@ -5,7 +5,7 @@ draft: false
 tags: ["shell", "windows terminal"]
 ---
 
-![20220730172459](https://static.aalmix.com/20220730172459.png)
+![20220730172459](/make-a-beautiful-windows-terminal.assets/20220730172459.png)
 
 ## 安装 PowerShell7
 

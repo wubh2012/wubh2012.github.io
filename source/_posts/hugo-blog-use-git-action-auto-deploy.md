@@ -15,8 +15,8 @@ GitHub Actions 是 GitHub 官方推出的持续集成服务。通过 GitHub Acti
 
 进入 wubh2012.github.io 仓库，点击 Actions 选项卡，开始创建一个新的 Actions，按照下面的步骤将操作即可。
 
-![微信截图_20220526140607](https://static.aalmix.com/微信截图_20220526140607.png)
-![微信截图_20220526140646](https://static.aalmix.com/微信截图_20220526140646.png)
+![微信截图_20220526140607](/hugo-blog-use-git-action-auto-deploy.assets/微信截图_20220526140607.png)
+![微信截图_20220526140646](/hugo-blog-use-git-action-auto-deploy.assets/微信截图_20220526140646.png)
 
 ```yaml
 name: github pages
@@ -70,6 +70,6 @@ jobs:
 ```
 
 配置好后我们每次推送更新到仓库，都会触发自动构建静态网页，默认放到 `gh-pages` 分支，可能需要到设置中修改 Github Page 的源
-![20220526180758](https://static.aalmix.com/20220526180758.png)
+![20220526180758](/hugo-blog-use-git-action-auto-deploy.assets/20220526180758.png)
 
 而且每天凌晨也会自动部署，这样是不是省事多了 😀 ！
