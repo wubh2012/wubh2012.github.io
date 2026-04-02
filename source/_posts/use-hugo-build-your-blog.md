@@ -11,15 +11,15 @@ tags: ["博客", "hugo"]
 
 首先我们到 [Hugo Release](https://github.com/gohugoio/hugo/releases) 页面根据自己的操作系统版本下载 Hugo，本文以 Windows 为例，我们下载 Windows x64 版本，然后将文件解压到 `D:/software/hugo` 目录下
 
-![20220417210225](./use-hugo-build-your-blog.assets/20220417210225.png)
+![20220417210225](.assets/20220417210225.png)
 
-![20220417210629](./use-hugo-build-your-blog.assets/20220417210629.png)
+![20220417210629](.assets/20220417210629.png)
 
 然后配置一下系统的环境变量，打开电脑的高级系统设置，设置系统变量，在 `PATH`变量后面添加 Hugo 的目录 `D:/software/hugo`，然后保存，关闭系统设置，然后打开命令行，进入 `D:/software/hugo` 目录，执行 `hugo version` 命令验证一下即可，如下图所示：
 
-![20220417211154](./use-hugo-build-your-blog.assets/20220417211154.png)
+![20220417211154](.assets/20220417211154.png)
 
-![20220417211401](./use-hugo-build-your-blog.assets/20220417211401.png)
+![20220417211401](.assets/20220417211401.png)
 
 配置好环境变量后我们就可以在任意一个目录下执行 `hugo` 命令了。
 
@@ -27,9 +27,9 @@ tags: ["博客", "hugo"]
 
 我们可以使用 `hugo new site myblog` 创建一个新的博客站点，然后在 `myblog` 目录下执行 `hugo server` 命令，hugo 默认端口使用的是 1313, 我们在浏览器中输入 `http://localhost:1313` 就可以访问了如下图所示：
 
-![20220420211247](./use-hugo-build-your-blog.assets/20220420211247.png)
+![20220420211247](.assets/20220420211247.png)
 由于我们目前还没有写任何文章，所以看到的是一个空白的页面。
-![20220420211620](./use-hugo-build-your-blog.assets/20220420211620.png)
+![20220420211620](.assets/20220420211620.png)
 
 ### 添加主题
 
@@ -177,11 +177,11 @@ reward: false	 # 关闭打赏
 
 1. 在 Github 创建一个与你账号同名的仓库，以 wubh2012.github.io 为例子
 2. 在仓库中设置启用 GitPage
-   ![20220525212029](./use-hugo-build-your-blog.assets/20220525212029.png)
+   ![20220525212029](.assets/20220525212029.png)
 3. 首先使用 `hugo -D` 构建静态站点，默认会在 `public/` 目录下生成静态文件，将 public 文件夹的内容上传到仓库中
-   ![20220525212122](./use-hugo-build-your-blog.assets/20220525212122.png)
+   ![20220525212122](.assets/20220525212122.png)
 4. 访问 https://wubh2012.github.io
 
-![20220525212203](./use-hugo-build-your-blog.assets/20220525212203.png)
+![20220525212203](.assets/20220525212203.png)
 
 大工告成，恭喜你现在有一个自己的博客了！如果博客有更新只要重新上传 public 文件夹即可, 后面会教大家如何使用 GitAction 自动更新部署。
